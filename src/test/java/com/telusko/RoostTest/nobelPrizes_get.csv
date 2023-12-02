@@ -1,0 +1,42 @@
+import csv
+import random
+import faker
+
+fake = faker.Faker()
+
+# Defined variables
+offsets = list(range(1, 101))
+limits = list(range(1, 101))
+sorts = ["asc", "desc"]
+nobelPrizeYears = list(range(1901, 2022))
+yearTos = list(range(1901, 2022))
+nobelPrizeCategories = ["che", "eco", "lit", "pea", "phy", "med"]
+formats = ["json", "csv"]
+csvLangs = ["en", "se", "no"]
+statusCodes = list(range(100, 600))
+
+# CSV header
+header = ["offset", "limit", "sort", "nobelPrizeYear", "yearTo", "nobelPrizeCategory", "format", "csvLang", "statusCode"]
+
+# CSV data
+data = []
+
+for _ in range(10):  # Generate 10 rows of data
+    row = [
+        random.choice(offsets),
+        random.choice(limits),
+        random.choice(sorts),
+        random.choice(nobelPrizeYears),
+        random.choice(yearTos),
+        random.choice(nobelPrizeCategories),
+        random.choice(formats),
+        random.choice(csvLangs),
+        random.choice(statusCodes),
+    ]
+    data.append(row)
+
+# Write data to CSV file
+with open('dummy_data.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(header)
+    writer.writerows(data)

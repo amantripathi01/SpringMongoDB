@@ -1,0 +1,61 @@
+import csv
+import random
+import faker
+from faker import Faker
+
+# Initialize Faker library
+fake = Faker()
+
+# Define variables
+sort_values = ["asc", "desc"]
+gender_values = ["female", "male", "other"]
+continent_values = ["Africa", "Asia", "Europe", "North America", "Oceania", "South America", "Antarctica"]
+nobel_category_values = ["che","eco","lit","pea","phy","med"]
+format_values = ["json","csv"]
+csv_lang_values = ["en","se","no"]
+
+# Define CSV headers
+headers = ["offset", "limit", "sort", "ID", "name", "gender", "motivation", "affiliation", "residence", "birthDate", "birthDateTo", "deathDate", "deathDateTo", "foundedDate", "birthCity", "birthCountry", "birthContinent", "deathCity", "deathCountry", "deathContinent", "foundedCity", "foundedCountry", "foundedContinent", "HeadquartersCity", "HeadquartersCountry", "HeadquartersContinent", "nobelPrizeYear", "yearTo", "nobelPrizeCategory", "format", "csvLang", "statusCode"]
+
+# Open CSV file
+with open('dummy_data.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(headers)
+
+    # Generate 10 rows of dummy data
+    for i in range(10):
+        row = [
+            i,  # offset
+            random.randint(1, 10),  # limit
+            random.choice(sort_values),  # sort
+            fake.random_int(min=1, max=1000),  # ID
+            fake.name(),  # name
+            random.choice(gender_values),  # gender
+            fake.text(max_nb_chars=50),  # motivation
+            fake.company(),  # affiliation
+            fake.address(),  # residence
+            fake.date(pattern="%Y-%m-%d", end_datetime=None),  # birthDate
+            fake.date(pattern="%Y-%m-%d", end_datetime=None),  # birthDateTo
+            fake.date(pattern="%Y-%m-%d", end_datetime=None),  # deathDate
+            fake.date(pattern="%Y-%m-%d", end_datetime=None),  # deathDateTo
+            fake.date(pattern="%Y-%m-%d", end_datetime=None),  # foundedDate
+            fake.city(),  # birthCity
+            fake.country(),  # birthCountry
+            random.choice(continent_values),  # birthContinent
+            fake.city(),  # deathCity
+            fake.country(),  # deathCountry
+            random.choice(continent_values),  # deathContinent
+            fake.city(),  # foundedCity
+            fake.country(),  # foundedCountry
+            random.choice(continent_values),  # foundedContinent
+            fake.city(),  # HeadquartersCity
+            fake.country(),  # HeadquartersCountry
+            random.choice(continent_values),  # HeadquartersContinent
+            fake.year(),  # nobelPrizeYear
+            fake.year(),  # yearTo
+            random.choice(nobel_category_values),  # nobelPrizeCategory
+            random.choice(format_values),  # format
+            random.choice(csv_lang_values),  # csvLang
+            random.randint(100, 600)  # statusCode
+        ]
+        writer.writerow(row)

@@ -1,0 +1,21 @@
+import csv
+import random
+
+# Define a function to generate random integer values
+def generate_integer():
+    return random.randint(1, 100)
+
+# Define CSV column headers
+headers = ['laureateID', 'statusCode']
+
+# Generate dummy data for each row
+data = []
+for i in range(10):
+    row = [generate_integer(), generate_integer()]
+    data.append(row)
+    
+# Write data to CSV file
+with open('dummy_data.csv', 'w', newline='') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(headers)
+    writer.writerows(data)
