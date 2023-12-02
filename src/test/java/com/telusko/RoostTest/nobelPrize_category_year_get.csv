@@ -1,0 +1,33 @@
+import csv
+import random
+from faker import Faker
+
+fake = Faker()
+
+# Define the CSV header
+header = ['category', 'year', 'statusCode']
+
+# Define the categories
+categories = ['che', 'eco', 'lit', 'pea', 'phy', 'med']
+
+# Open the CSV file in write mode
+with open('dummy_data.csv', 'w', newline='') as csvfile:
+    # Create a CSV writer
+    writer = csv.writer(csvfile)
+    
+    # Write the header to the CSV file
+    writer.writerow(header)
+    
+    # Generate 10 rows of dummy data
+    for _ in range(10):
+        # Generate a random category
+        category = random.choice(categories)
+        
+        # Generate a random year
+        year = fake.year()
+        
+        # Generate a random status code
+        statusCode = fake.random_int(min=100, max=600)
+        
+        # Write the row to the CSV file
+        writer.writerow([category, year, statusCode])
