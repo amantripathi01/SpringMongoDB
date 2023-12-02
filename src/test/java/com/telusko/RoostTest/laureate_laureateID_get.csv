@@ -1,0 +1,20 @@
+import csv
+import random
+
+# Define the headers
+headers = ["laureateID", "statusCode"]
+
+# Open the CSV file in write mode
+with open('dummy.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+
+    # Write the headers to the CSV file
+    writer.writerow(headers)
+
+    # Generate 10 rows of dummy data
+    for i in range(10):
+        laureateID = random.randint(1, 100)
+        statusCode = random.randint(100, 200)
+
+        # Write the row to the CSV file
+        writer.writerow([laureateID, statusCode])
