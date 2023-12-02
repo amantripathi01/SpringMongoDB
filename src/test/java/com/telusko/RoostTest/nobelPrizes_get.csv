@@ -1,0 +1,35 @@
+import csv
+import random
+import faker
+
+fake = faker.Faker()
+
+# Defined variables
+sort_options = ["asc", "desc"]
+nobel_prize_categories = ["che","eco","lit","pea","phy","med"]
+formats = ["json", "csv"]
+csv_langs = ["en", "se", "no"]
+
+# Function to generate a random row
+def generate_row():
+    row = {
+        "offset": random.randint(1, 100),
+        "limit": random.randint(1, 100),
+        "sort": random.choice(sort_options),
+        "nobelPrizeYear": random.randint(1901, 2021),  # Nobel prizes started in 1901
+        "yearTo": random.randint(1901, 2021),
+        "nobelPrizeCategory": random.choice(nobel_prize_categories),
+        "format": random.choice(formats),
+        "csvLang": random.choice(csv_langs),
+        "statusCode": random.randint(100, 600)  # HTTP status codes range
+    }
+    return row
+
+# Create CSV file
+with open('sample_data.csv', 'w', newline='') as csvfile:
+    fieldnames = ["offset", "limit", "sort", "nobelPrizeYear", "yearTo", "nobelPrizeCategory", "format", "csvLang", "statusCode"]
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+    writer.writeheader()
+    for _ in range(10):
+        writer.writerow(generate_row())
