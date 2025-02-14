@@ -1,0 +1,74 @@
+Based on the given user story description, here are the test cases/scenarios covering both functional and non-functional tests:
+
+# Functional Tests
+
+## Test Case 1: Verify Jira Ticket Creation and Test Trigger
+- **Description:** Ensure that a new Jira ticket can be created and a test can be triggered successfully.
+- **Input Values:**
+  - `license_key`: Valid license key
+  - `jira_ticket_id`: Unique Jira ticket ID
+  - `jira_host_name`: Valid Jira host name
+  - `ai_model_info`: Valid AI model information
+  - `integration_info`: Valid integration information
+  - `create_api_spec`: True/False (optional)
+- **Expected Output:** A new Jira ticket should be created, and a test should be triggered successfully. The response should include the `test_id`.
+- **Edge Cases:**
+  - Test with invalid input values (e.g., empty strings, malformed data)
+  - Test with missing required fields
+  - Test with large input data to verify handling of large payloads
+
+## Test Case 2: Verify Test Execution and Results
+- **Description:** Ensure that the triggered test is executed correctly, and the results are accurate.
+- **Input Values:**
+  - `test_id`: Valid test ID from the previous test case
+- **Expected Output:** The test should be executed successfully, and the results should be available for review.
+- **Edge Cases:**
+  - Test with an invalid `test_id`
+  - Test with a `test_id` for a failed or incomplete test
+
+## Test Case 3: Verify Jira Ticket Update
+- **Description:** Ensure that the Jira ticket is updated with the test results after test execution.
+- **Input Values:**
+  - `jira_ticket_id`: Valid Jira ticket ID
+- **Expected Output:** The Jira ticket should be updated with the test results, including any issues found, comments, and attachments.
+- **Edge Cases:**
+  - Test with an invalid `jira_ticket_id`
+  - Test with a `jira_ticket_id` for a ticket that does not exist
+
+# Non-Functional Tests
+
+## Performance Testing
+- **Description:** Evaluate the system's performance under various load conditions.
+- **Test Cases:**
+  - Stress Testing: Test the system's behavior under extreme load conditions (e.g., high concurrent users, large payloads)
+  - Load Testing: Test the system's performance under different levels of load (e.g., low, medium, high)
+  - Scalability Testing: Test the system's ability to scale horizontally or vertically to handle increased load
+
+## Security Testing
+- **Description:** Ensure that the system is secure and resistant to various types of attacks.
+- **Test Cases:**
+  - Authentication and Authorization Testing: Test the system's access control mechanisms
+  - Input Validation Testing: Test the system's handling of malicious input data
+  - Vulnerability Scanning: Perform automated vulnerability scans to identify potential security vulnerabilities
+
+## Usability Testing
+- **Description:** Evaluate the user experience and ease of use of the system.
+- **Test Cases:**
+  - User Interface Testing: Test the system's user interface for consistency, intuitive design, and accessibility
+  - Localization Testing: Test the system's support for different languages and cultural preferences
+
+## Compatibility Testing
+- **Description:** Ensure that the system is compatible with different environments and configurations.
+- **Test Cases:**
+  - Cross-Browser Testing: Test the system's compatibility with various web browsers
+  - Cross-Platform Testing: Test the system's compatibility with different operating systems and devices
+  - Integration Testing: Test the system's integration with third-party systems and APIs (e.g., Jira, AI models)
+
+## Reliability Testing
+- **Description:** Evaluate the system's ability to recover from failures and handle unexpected situations.
+- **Test Cases:**
+  - Failover Testing: Test the system's ability to failover to redundant components or systems
+  - Error Handling Testing: Test the system's handling of various error conditions and exceptions
+  - Recovery Testing: Test the system's ability to recover from failures or crashes
+
+Note: The above test cases are general examples, and you may need to tailor them to fit your specific requirements and system architecture.
