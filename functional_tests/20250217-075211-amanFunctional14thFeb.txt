@@ -1,0 +1,73 @@
+Here are the test cases/scenarios covering functional and non-functional tests for the user story "Roostgpt change for upload of Jira ticket as pdf for functional Test":
+
+**Functional Tests:**
+
+1. **Verify Jira Ticket Upload**
+   - **Description:** Ensure that the user can successfully upload a Jira ticket in PDF format for functional testing.
+   - **Test Steps:**
+     - Navigate to the Functional Testing section of the application.
+     - Select the option to upload a Jira ticket.
+     - Choose a valid PDF file containing a Jira ticket.
+     - Click the "Upload" button.
+   - **Expected Result:** The PDF file should be uploaded successfully, and the Jira ticket details should be displayed correctly.
+   - **Edge Cases:**
+     - Try uploading an empty PDF file.
+     - Try uploading a PDF file with an invalid or corrupted format.
+     - Try uploading a large PDF file (e.g., > 10 MB) to test file size limits.
+
+2. **Verify Jira Ticket Details Extraction**
+   - **Description:** Ensure that the application can correctly extract and display the relevant details from the uploaded Jira ticket PDF.
+   - **Test Steps:**
+     - Upload a valid Jira ticket PDF file.
+     - Verify that the extracted details (e.g., title, description, comments, etc.) match the information in the uploaded PDF.
+   - **Expected Result:** The extracted details should match the information in the uploaded Jira ticket PDF.
+   - **Edge Cases:**
+     - Test with a Jira ticket PDF that contains special characters or non-English text.
+     - Test with a Jira ticket PDF that has a different layout or format than the typical Jira PDF.
+
+3. **Verify Functional Test Creation**
+   - **Description:** Ensure that the application can create functional test cases based on the uploaded Jira ticket.
+   - **Test Steps:**
+     - Upload a valid Jira ticket PDF file.
+     - Initiate the process to create functional test cases.
+     - Verify that the generated test cases accurately reflect the information in the Jira ticket.
+   - **Expected Result:** The generated functional test cases should accurately represent the requirements and scenarios described in the Jira ticket.
+   - **Edge Cases:**
+     - Test with a Jira ticket that contains complex or ambiguous requirements.
+     - Test with a Jira ticket that lacks sufficient information for generating test cases.
+
+**Non-Functional Tests:**
+
+1. **Performance Testing**
+   - **Description:** Ensure that the application can handle a large number of concurrent requests for uploading Jira tickets and generating functional tests.
+   - **Test Steps:**
+     - Use a load testing tool (e.g., JMeter, LoadRunner) to simulate a high volume of concurrent users uploading Jira ticket PDFs and generating functional tests.
+     - Monitor the application's response times, resource utilization, and error rates.
+   - **Expected Result:** The application should maintain acceptable performance and stability under high load conditions.
+   - **Edge Cases:**
+     - Test with a mix of different file sizes and types.
+     - Test with a combination of valid and invalid file uploads.
+
+2. **Security Testing**
+   - **Description:** Ensure that the application properly handles and protects sensitive information contained in the uploaded Jira ticket PDFs.
+   - **Test Steps:**
+     - Upload a Jira ticket PDF containing sensitive information (e.g., passwords, personal data).
+     - Verify that the sensitive information is not exposed in the application's user interface or logs.
+     - Attempt to access or download the uploaded PDF file directly (e.g., by guessing the file path).
+   - **Expected Result:** The application should properly safeguard sensitive information and prevent unauthorized access to uploaded files.
+   - **Edge Cases:**
+     - Test with different types of sensitive information (e.g., credit card numbers, social security numbers).
+     - Test with different levels of user permissions and roles.
+
+3. **Usability Testing**
+   - **Description:** Ensure that the user interface and flow for uploading Jira ticket PDFs and generating functional tests are intuitive and user-friendly.
+   - **Test Steps:**
+     - Recruit a group of representative users (e.g., developers, testers, project managers) to participate in usability testing.
+     - Observe and gather feedback from users as they navigate through the process of uploading Jira ticket PDFs and generating functional tests.
+     - Identify any areas of confusion, frustration, or inefficiency in the user experience.
+   - **Expected Result:** The user interface and flow should be intuitive, and users should be able to complete the tasks with ease and minimal friction.
+   - **Edge Cases:**
+     - Test with users who have varying levels of technical expertise.
+     - Test with users who have different accessibility needs (e.g., visual impairments, motor impairments).
+
+Note: These are just examples, and you may need to add or modify test cases/scenarios based on your specific requirements and implementation details.
