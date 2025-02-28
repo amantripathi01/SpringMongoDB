@@ -129,6 +129,8 @@ Details:
 ```
 
 roost_feedback [2/24/2025, 8:07:04 AM]:Modify Code to fix this error\n[159,43] no suitable method found for thenReturn(java.util.Iterator<org.bson.Document>)\n[172,43] no suitable method found for thenReturn(java.util.Iterator<org.bson.Document>)\n[191,43] no suitable method found for thenReturn(java.util.Iterator<org.bson.Document>)\n[210,43] no suitable method found for thenReturn(java.util.Iterator<org.bson.Document>)\n[219,43] no suitable method found for thenReturn(java.util.Iterator<org.bson.Document>)\n[230,43] no suitable method found for thenReturn(java.util.Iterator<org.bson.Document>)\n[242,43] no suitable method found for thenReturn(java.util.Iterator<org.bson.Document>)\n[254,43] no suitable method found for thenReturn(java.util.Iterator<org.bson.Document>)\n[266,43] no suitable method found for thenReturn(java.util.Iterator<org.bson.Document>)\n- Add more comments to the test\n- Improve assertions
+
+roost_feedback [2/28/2025, 6:02:27 AM]:Add more test
 */
 
 // ********RoostGPT********
@@ -202,6 +204,9 @@ class SearchRepositoryImplFindByTextTest {
         when(converter.read(Post.class, documents.get(2))).thenReturn(new Post());
         List<Post> result = searchRepositoryImpl.findByText("Java");
         assertEquals(3, result.size(), "Expected 3 posts sorted by experience in ascending order");
+        assertEquals(1L, result.get(0).getExp(), "Expected first post to have experience 1");
+        assertEquals(2L, result.get(1).getExp(), "Expected second post to have experience 2");
+        assertEquals(3L, result.get(2).getExp(), "Expected third post to have experience 3");
     }
 
     @Test
@@ -302,5 +307,20 @@ class SearchRepositoryImplFindByTextTest {
         when(converter.read(Post.class, documents.get(0))).thenReturn(new Post());
         List<Post> result = searchRepositoryImpl.findByText("Java#");
         assertEquals(1, result.size(), "Expected 1 post with special characters in search text");
+    }
+
+    @Test
+    @Tag("valid")
+    public void testFindByTextReturnsPostsWithMultipleMatchesInSearchText() {
+        List<Document> documents = Arrays.asList(
+                new Document("techs", "Java").append("desc", "Backend Developer").append("profile", "Senior Developer"),
+                new Document("techs", "Java").append("desc", "Full Stack Developer").append("profile", "Junior Developer")
+        );
+        Iterator<Document> iterator = documents.iterator();
+        when(aggregateIterable.iterator()).thenReturn(iterator);
+        when(converter.read(Post.class, documents.get(0))).thenReturn(new Post());
+        when(converter.read(Post.class, documents.get(1))).thenReturn(new Post());
+        List<Post> result = searchRepositoryImpl.findByText("Java");
+        assertEquals(2, result.size(), "Expected 2 posts with multiple matches in search text");
     }
 }
