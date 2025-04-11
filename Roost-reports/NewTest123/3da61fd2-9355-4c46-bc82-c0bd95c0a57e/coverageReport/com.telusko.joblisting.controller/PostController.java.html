@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PostController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">joblisting</a> &gt; <a href="index.source.html" class="el_package">com.telusko.joblisting.controller</a> &gt; <span class="el_source">PostController.java</span></div><h1>PostController.java</h1><pre class="source lang-java linenums">package com.telusko.joblisting.controller;
+
+import com.telusko.joblisting.repository.PostRepository;
+import com.telusko.joblisting.model.Post;
+import com.telusko.joblisting.repository.SearchRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
+
+@RestController
+@CrossOrigin(origins = &quot;http://localhost:3000&quot;)
+<span class="nc" id="L16">public class PostController</span>
+{
+
+    @Autowired
+    PostRepository repo;
+
+    @Autowired
+    SearchRepository srepo;
+
+    @ApiIgnore
+    @RequestMapping(value=&quot;/&quot;)
+    public void redirect(HttpServletResponse response) throws IOException {
+<span class="nc" id="L28">        response.sendRedirect(&quot;/swagger-ui.html&quot;);</span>
+<span class="nc" id="L29">    }</span>
+
+    @GetMapping(&quot;/allPosts&quot;)
+    @CrossOrigin
+    public List&lt;Post&gt; getAllPosts()
+    {
+<span class="nc" id="L35">        return repo.findAll();</span>
+    }
+    // posts/java
+    @GetMapping(&quot;/posts/{text}&quot;)
+    @CrossOrigin
+    public List&lt;Post&gt; search(@PathVariable String text)
+    {
+<span class="nc" id="L42">        return srepo.findByText(text);</span>
+    }
+
+    @PostMapping(&quot;/post&quot;)
+    @CrossOrigin
+    public Post addPost(@RequestBody Post post)
+    {
+<span class="nc" id="L49">        return repo.save(post);</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
