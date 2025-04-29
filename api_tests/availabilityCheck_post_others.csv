@@ -1,0 +1,11 @@
+subscriberId^|^addressId^|^complementType^|^complementValue^|^statusCode^|^scenario
+123456789^|^A123456789^|^FLR^|^A12^|^200^|^Scenario1
+987654321^|^B234567890^|^BLD^|^B24^|^300^|^Scenario2
+456123789^|^C345678901^|^APT^|^C36^|^250^|^Scenario3
+654321987^|^D456789012^|^^|^D48^|^150^|^Scenario4
+321654978^|^E567890123^|^SCN^|^E510^|^100^|^Scenario5
+789456123^|^F678901234^|^^|^F612^|^400^|^Scenario6
+412365897^|^G789012345^|^FLR^|^G714^|^500^|^Scenario7
+896541237^|^H890123456^|^BLD^|^H816^|^275^|^Scenario8
+785412639^|^I901234567^|^APT^|^I918^|^375^|^Scenario9
+659874123^|^J012345678^|^^|^J1020^|^475^|^Scenario10
