@@ -19,22 +19,19 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 	@Bean
 	public Docket api() {
 <span class="nc" id="L21">		return new Docket(DocumentationType.SWAGGER_2).select()</span>
-<span class="nc" id="L22">			.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))</span>
-<span class="nc" id="L23">			.paths(PathSelectors.any())</span>
-<span class="nc" id="L24">			.build()</span>
-<span class="nc" id="L25">			.apiInfo(apiInfo())</span>
-<span class="nc" id="L26">			.useDefaultResponseMessages(false);</span>
+<span class="nc" id="L22">				.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class)).paths(PathSelectors.any())</span>
+<span class="nc" id="L23">				.build().apiInfo(apiInfo()).useDefaultResponseMessages(false);</span>
 	}
 
 	@Bean
 	public ApiInfo apiInfo() {
-<span class="nc" id="L31">		final ApiInfoBuilder builder = new ApiInfoBuilder();</span>
-<span class="nc" id="L32">		return builder.build();</span>
+<span class="nc" id="L28">		final ApiInfoBuilder builder = new ApiInfoBuilder();</span>
+<span class="nc" id="L29">		return builder.build();</span>
 	}
 
 	public static void main(String[] args) {
-<span class="nc" id="L36">		SpringApplication.run(JoblistingApplication.class, args);</span>
-<span class="nc" id="L37">	}</span>
+<span class="nc" id="L33">		SpringApplication.run(JoblistingApplication.class, args);</span>
+<span class="nc" id="L34">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -4,21 +4,17 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 
 <span class="nc" id="L6">public class mongoDbConnection {</span>
+      public static void main(String[] args) {
+        try {
+            // Replace &quot;your_connection_string&quot; with your actual MongoDB connection string
+<span class="nc" id="L10">            MongoClient mongoClient = MongoClients.create(&quot;mongodb+srv://amankumartripathi29:beawesome@cluster0.i5ji6yi.mongodb.net/?retryWrites=true&amp;w=majority&quot;);</span>
 
-	public static void main(String[] args) {
-		try {
-			// Replace &quot;your_connection_string&quot; with your actual MongoDB connection string
-<span class="nc" id="L11">			MongoClient mongoClient = MongoClients.create(</span>
-					&quot;mongodb+srv://amankumartripathi29:beawesome@cluster0.i5ji6yi.mongodb.net/?retryWrites=true&amp;w=majority&quot;);
-
-			// If the connection is successful, this line will be executed
-<span class="nc" id="L15">			System.out.println(&quot;Connected to MongoDB!&quot;);</span>
-		}
-<span class="nc" id="L17">		catch (Exception e) {</span>
-			// If there's an exception, print an error message
-<span class="nc" id="L19">			System.err.println(&quot;Unable to connect to MongoDB. Error: &quot; + e.getMessage());</span>
-<span class="nc" id="L20">		}</span>
-<span class="nc" id="L21">	}</span>
-
+            // If the connection is successful, this line will be executed
+<span class="nc" id="L13">            System.out.println(&quot;Connected to MongoDB!&quot;);</span>
+<span class="nc" id="L14">        } catch (Exception e) {</span>
+            // If there's an exception, print an error message
+<span class="nc" id="L16">            System.err.println(&quot;Unable to connect to MongoDB. Error: &quot; + e.getMessage());</span>
+<span class="nc" id="L17">        }</span>
+<span class="nc" id="L18">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

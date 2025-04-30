@@ -14,35 +14,35 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
 @Component
-<span class="nc" id="L18">public class SearchRepositoryImpl implements SearchRepository {</span>
+<span class="nc" id="L19">public class SearchRepositoryImpl implements SearchRepository{</span>
 
-	@Autowired
-	MongoClient client;
+    @Autowired
+    MongoClient client;
 
-	@Autowired
-	MongoConverter converter;
+    @Autowired
+    MongoConverter converter;
 
-	@Override
-	public List&lt;Post&gt; findByText(String text) {
+    @Override
+    public List&lt;Post&gt; findByText(String text) {
 
-<span class="nc" id="L29">		final List&lt;Post&gt; posts = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L30">        final List&lt;Post&gt; posts = new ArrayList&lt;&gt;();</span>
 
-<span class="nc" id="L31">		MongoDatabase database = client.getDatabase(&quot;telusko&quot;);</span>
-<span class="nc" id="L32">		MongoCollection&lt;Document&gt; collection = database.getCollection(&quot;JobPost&quot;);</span>
+<span class="nc" id="L32">        MongoDatabase database = client.getDatabase(&quot;telusko&quot;);</span>
+<span class="nc" id="L33">        MongoCollection&lt;Document&gt; collection = database.getCollection(&quot;JobPost&quot;);</span>
 
-<span class="nc" id="L34">		AggregateIterable&lt;Document&gt; result = collection</span>
-<span class="nc" id="L35">			.aggregate(Arrays.asList(</span>
-					new Document(&quot;$search&quot;,
-							new Document(&quot;text&quot;,
-<span class="nc" id="L38">									new Document(&quot;query&quot;, text).append(&quot;path&quot;,</span>
-<span class="nc" id="L39">											Arrays.asList(&quot;techs&quot;, &quot;desc&quot;, &quot;profile&quot;)))),</span>
-<span class="nc" id="L40">					new Document(&quot;$sort&quot;, new Document(&quot;exp&quot;, 1L)), new Document(&quot;$limit&quot;, 5L)));</span>
+<span class="nc" id="L35">        AggregateIterable&lt;Document&gt; result = collection.aggregate(Arrays.asList(new Document(&quot;$search&quot;,</span>
+                        new Document(&quot;text&quot;,
+                        new Document(&quot;query&quot;, text)
+<span class="nc" id="L38">                        .append(&quot;path&quot;, Arrays.asList(&quot;techs&quot;, &quot;desc&quot;, &quot;profile&quot;)))),</span>
+                        new Document(&quot;$sort&quot;,
+<span class="nc" id="L40">                        new Document(&quot;exp&quot;, 1L)),</span>
+<span class="nc" id="L41">                        new Document(&quot;$limit&quot;, 5L)));</span>
 
-<span class="nc" id="L42">		result.forEach(doc -&gt; posts.add(converter.read(Post.class, doc)));</span>
+<span class="nc" id="L43">        result.forEach(doc -&gt; posts.add(converter.read(Post.class,doc)));</span>
 
-<span class="nc" id="L44">		return posts;</span>
-	}
-
+<span class="nc" id="L45">        return posts;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
