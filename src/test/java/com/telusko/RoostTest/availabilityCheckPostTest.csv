@@ -1,0 +1,11 @@
+RequestBody^|^statusCode
+{"field1":"value1","field2":"value2","field3":"value3"}^|^200
+{"field1":"value4","field2":"value5","field3":"value6"}^|^400
+{"field1":"value7","field2":"value8","field3":"value9"}^|^401
+{"field1":"value10","field2":"value11","field3":"value12"}^|^403
+{"field1":"value13","field2":"value14","field3":"value15"}^|^404
+{"field1":"value16","field2":"value17","field3":"value18"}^|^429
+{"field1":"value19","field2":"value20","field3":"value21"}^|^500
+{"field1":"value22","field2":"value23","field3":"value24"}^|^503
+{"field1":"value25","field2":"value26","field3":"value27"}^|^504
+{"field1":"value28","field2":"value29","field3":"value30"}^|^403
