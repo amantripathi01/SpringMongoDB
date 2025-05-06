@@ -1,0 +1,11 @@
+^|^maxBandwidth^|^availabilityType^|^availabilityCode^|^availabilityDescription^|^products^|^statusCode^|^scenario
+12345^|^100^|^Public^|^AVAIL123^|^Always Available^|^ProductA^|^200^|^Scenario1
+12346^|^200^|^Private^|^AVAIL124^|^Limited Availability^|^ProductB^|^201^|^Scenario2
+12347^|^300^|^Public^|^AVAIL125^|^Always Available^|^ProductC^|^200^|^Scenario1
+12348^|^400^|^Private^|^AVAIL126^|^Limited Availability^|^ProductD^|^201^|^Scenario2
+12349^|^500^|^Public^|^AVAIL127^|^Always Available^|^ProductE^|^200^|^Scenario1
+12350^|^600^|^Private^|^AVAIL128^|^Limited Availability^|^ProductF^|^201^|^Scenario2
+12351^|^700^|^Public^|^AVAIL129^|^Always Available^|^ProductG^|^200^|^Scenario1
+12352^|^800^|^Private^|^AVAIL130^|^Limited Availability^|^ProductH^|^201^|^Scenario2
+12353^|^900^|^Public^|^AVAIL131^|^Always Available^|^ProductI^|^200^|^Scenario1
+12354^|^1000^|^Private^|^AVAIL132^|^Limited Availability^|^ProductJ^|^201^|^Scenario2
