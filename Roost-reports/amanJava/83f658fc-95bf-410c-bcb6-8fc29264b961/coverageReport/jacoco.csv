@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+joblisting,com.telusko.joblisting,JoblistingApplication,32,0,0,0,8,0,4,0,4,0
+joblisting,com.telusko.joblisting,mongoDbConnection,17,0,0,0,7,0,2,0,2,0
+joblisting,com.telusko.joblisting.controller,PostController,22,0,0,0,6,0,5,0,5,0
+joblisting,com.telusko.joblisting.repository,SearchRepositoryImpl,94,0,0,0,10,0,3,0,3,0
+joblisting,com.telusko.joblisting.model,Post,12,30,0,0,4,12,4,6,4,6
