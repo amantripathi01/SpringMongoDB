@@ -1,0 +1,11 @@
+^|^statusCode
+{"name":"John Doe","age":30,"email":"john.doe@example.com"}^|^200
+{"name":"Jane Smith","age":25,"email":"jane.smith@example.com"}^|^404
+{"name":"Emily Jones","age":28,"email":"emily.jones@example.com"}^|^200
+{"name":"Michael Brown","age":35,"email":"michael.brown@example.com"}^|^401
+{"name":"Jessica Davis","age":29,"email":"jessica.davis@example.com"}^|^500
+{"name":"William Wilson","age":31,"email":"william.wilson@example.com"}^|^403
+{"name":"Amanda Martin","age":32,"email":"amanda.martin@example.com"}^|^429
+{"name":"Daniel Anderson","age":27,"email":"daniel.anderson@example.com"}^|^503
+{"name":"Sophia Thomas","age":34,"email":"sophia.thomas@example.com"}^|^504
+{"name":"Christopher Lewis","age":36,"email":"christopher.lewis@example.com"}^|^400
