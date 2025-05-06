@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="res/vis.min.js"></script>
+    <link href="res/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"main","id":1}];
+var items = [{"id":1,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.1:26]","start":1746516103811,"end":1746516104789,"title":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.1:26] 07:21:43.811-07:21:44.789 Post availability check","className":"failed"},{"id":2,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.2:27]","start":1746516104810,"end":1746516104818,"title":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.2:27] 07:21:44.810-07:21:44.818 Post availability check","className":"failed"},{"id":3,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.3:28]","start":1746516104834,"end":1746516104841,"title":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.3:28] 07:21:44.834-07:21:44.841 Post availability check","className":"failed"},{"id":4,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.4:29]","start":1746516104855,"end":1746516104862,"title":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.4:29] 07:21:44.855-07:21:44.862 Post availability check","className":"failed"},{"id":5,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.5:30]","start":1746516104878,"end":1746516104885,"title":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.5:30] 07:21:44.878-07:21:44.885 Post availability check","className":"failed"},{"id":6,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.6:31]","start":1746516104900,"end":1746516104908,"title":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.6:31] 07:21:44.900-07:21:44.908 Post availability check","className":"failed"},{"id":7,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.7:32]","start":1746516104922,"end":1746516104929,"title":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.7:32] 07:21:44.922-07:21:44.929 Post availability check","className":"failed"},{"id":8,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.8:33]","start":1746516104946,"end":1746516104963,"title":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.8:33] 07:21:44.946-07:21:44.963 Post availability check","className":"failed"},{"id":9,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.9:34]","start":1746516104981,"end":1746516104990,"title":"src\/test\/java\/com\/telusko\/api_tests\/ResourcePoolManagement2\/availabilityCheck_post[1.9:34] 07:21:44.981-07:21:44.990 Post availability check","className":"failed"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>
