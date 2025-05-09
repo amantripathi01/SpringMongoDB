@@ -1,0 +1,8 @@
+CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader,CSVHeader
+date,subscriberId,id,correlationOrder,associatedDocument,code.code,description.description,type,observation,updateDate,action,task,fieldActivity,reason,order.type,order.code,order.description,lostEquipment,gponAccess,device,item,statusCode,scenario
+2021-08-01,SID_100,ID_100,CORRORD_100,Doc_100,CC_100,Desc_100,Type1,Obs_100,2021-08-02,Act_100,Task_100,FA_100,Reason_100,OrdType_100,OrdCode_100,OrdDesc_100,Equip_100,Access_100,Dev_100,Item_100,204,Success
+2021-08-02,SID_101,ID_101,CORRORD_101,Doc_101,CC_101,Desc_101,Type2,Obs_101,2021-08-03,Act_101,Task_101,FA_101,Reason_101,OrdType_101,OrdCode_101,OrdDesc_101,Equip_101,Access_101,Dev_101,Item_101,400,BadRequest
+2021-08-03,SID_102,ID_102,CORRORD_102,Doc_102,CC_102,Desc_102,Type3,Obs_102,2021-08-04,Act_102,Task_102,FA_102,Reason_102,OrdType_102,OrdCode_102,OrdDesc_102,Equip_102,Access_102,Dev_102,Item_102,401,Unauthorized
+2021-08-04,SID_103,ID_103,CORRORD_103,Doc_103,CC_103,Desc_103,Type4,Obs_103,2021-08-05,Act_103,Task_103,FA_103,Reason_103,OrdType_103,OrdCode_103,OrdDesc_103,Equip_103,Access_103,Dev_103,Item_103,500,ServerError
+2021-08-05,SID_104,ID_104,CORRORD_104,Doc_104,CC_104,Desc_104,Type5,Obs_104,2021-08-06,Act_104,Task_104,FA_104,Reason_104,OrdType_104,OrdCode_104,OrdDesc_104,Equip_104,Access_104,Dev_104,Item_104,503,Unavailable
+2021-08-06,SID_105,ID_105,CORRORD_105,Doc_105,CC_105,Desc_105,Type6,Obs_105,2021-08-07,Act_105,Task_105,FA_105,Reason_105,OrdType_105,OrdCode_105,OrdDesc_105,Equip_105,Access_105,Dev_105,Item_105,504,Timeout

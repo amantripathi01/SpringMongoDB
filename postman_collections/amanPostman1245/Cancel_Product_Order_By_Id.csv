@@ -1,0 +1,12 @@
+order.Id,associatedDocument,subscriberId,statusCode,scenario
+123456,"Doc1","Sub1",200,"Success"
+789101,"Doc2","Sub2",400,"Bad Request"
+112131,"Doc3","Sub3",401,"Unauthorized"
+415161,"Doc4","Sub4",403,"Forbidden - Scope Not Permitted"
+718192,"Doc5","Sub5",404,"Not Found"
+021222,"Doc6","Sub6",406,"Not Acceptable"
+324252,"Doc7","Sub7",423,"Locked"
+627282,"Doc8","Sub8",429,"Too Many Requests - Exceeded Quota"
+931323,"Doc9","Sub9",500,"Internal Server Error"
+334353,"Doc10","Sub10",503,"Service Unavailable"
+936373,"Doc11","Sub11",504,"Gateway Timeout"

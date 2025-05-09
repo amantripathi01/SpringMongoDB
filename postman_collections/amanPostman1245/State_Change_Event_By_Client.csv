@@ -1,0 +1,7 @@
+date,subscriberId,id,correlationOrder,associatedDocument,code.code,description.description,type,observation,updateDate,action,task,fieldActivity,reason,order.type,order.code,order.description,lostEquipment,gponAccess,device,item,statusCode,scenario
+11-13-2021,1124,4456,1,1023,350,"Operation Successful",GET,"No errors",11-13-2021,Insert,Validate,Field Check,"N/A",Delivery,400,"Item Delivered","Router","N/A","PC","N/A",204,Operação realizada com sucesso
+11-14-2021,1125,4457,2,1024,351,"Invalid Request",POST,"Request Malformed",11-14-2021,Update,Validate,Field Check,"Incorrect Details",Return,401,"Item Returned","Modem","N/A","TV","N/A",400,BadRequest
+11-15-2021,1126,4458,3,1025,352,"Unauthorized Access",PUT,"Access Denied",11-15-2021,Delete,Authenticate,N/A,"Invalid Credentials",Cancellation,402,"Cancelled","N/A","N/A","N/A",3021,401,Unauthorized
+11-16-2021,1127,4459,4,1026,353,"Server Error",Delete,"Server Down",11-16-2021,Retrieve,Repair,Site Check,"Server Crash",Recovery,403,"Recovered","Antenna","N/A","Mobile Phone","N/A",500,ServerError
+11-17-2021,1128,4460,5,1027,354,"Service Unavailable",GET,"Service Down",11-17-2021,Create,Upgrade,Field Check,"Server Maintenance",Upgrade,404,"Upgraded","Decoder","N/A","TV","N/A",503,Unavailable
+11-18-2021,1129,4461,6,1028,355,"Timeout Error",POST,"Request Timed Out",11-18-2021,Modify,Downgrade,Field Check,"Service Slow",Downgrade,405,"Downgraded","Switch","N/A","Mobile Phone","N/A",504,Timeout
