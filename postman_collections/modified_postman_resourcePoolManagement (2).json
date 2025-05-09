@@ -1,0 +1,468 @@
+{
+  "item": [
+    {
+      "id": "15622e26-fcfd-42d2-947f-dad0f9c18a5a",
+      "name": "Create a Availability Check",
+      "request": {
+        "name": "Create a Availability Check",
+        "description": {},
+        "url": {
+          "path": [
+            "availabilityCheck"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"customer\": {\n        \"customer\": {\n            \"subscriberId\": \"{{subscriberId}}\"\n        }\n    },\n    \"address\": {\n        \"address\": {\n            \"id\": \"{{id}}\",\n            \"complement\": {\n                \"complement\": {\n                    \"complements\": [\n                        \"{{complements}}\"\n                    ]\n                }\n            }\n        }\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "a8c751df-f063-4e9e-b2a4-81d3f5156962",
+          "name": "successful operation",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "availabilityCheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"customer\": {\n        \"subscriberId\": \"{{subscriberId}}\"\n    },\n    \"address\": {\n        \"id\": \"{{id}}\",\n        \"complement\": {\n            \"complements\": [\n                \"{{complements}}\"\n            ]\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"control\": {\n    \"type\": \"S\",\n    \"code\": 200,\n    \"message\": \"OK\"\n  },\n  \"resource\": {\n    \"inventoryId\": 1766156,\n    \"maxBandwidth\": 1000,\n    \"availabilityType\": 1,\n    \"availabilityCode\": 0,\n    \"availabilityDescription\": \"Viável - Viabilidade técnica confirmada\",\n    \"products\": {\n      \"product\": [\n        {\n          \"type\": \"Banda Larga\",\n          \"catalogId\": \"BL_100MB\",\n          \"name\": \"VELOC_100MBPS\",\n          \"technology\": \"\"\n        },\n        {\n          \"type\": \"Banda Larga\",\n          \"catalogId\": \"BL_200MB\",\n          \"name\": \"VELOC_200MBPS\",\n          \"technology\": \"\"\n        },\n        {\n          \"type\": \"Banda Larga\",\n          \"catalogId\": \"BL_400MB\",\n          \"name\": \"VELOC_400MBPS\",\n          \"technology\": \"\"\n        },\n        {\n          \"type\": \"Banda Larga\",\n          \"catalogId\": \"BL_500MB\",\n          \"name\": \"VELOC_500MBPS\",\n          \"technology\": \"\"\n        },\n        {\n          \"type\": \"Banda Larga\",\n          \"catalogId\": \"BL_1000MB\",\n          \"name\": \"VELOC_1000MBPS\",\n          \"technology\": \"\",\n          \"best_offer\": true\n        }\n      ]\n    }\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "b6ee9ecb-947b-4a92-a0bd-4c0ee6ab73a8",
+          "name": "Bad Request",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "availabilityCheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"customer\": {\n        \"subscriberId\": \"{{subscriberId}}\"\n    },\n    \"address\": {\n        \"id\": \"{{id}}\",\n        \"complement\": {\n            \"complements\": [\n                \"{{complements}}\"\n            ]\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"control\": {\n    \"type\": \"E\",\n    \"code\": 400,\n    \"message\": \"OSB Validate action failed validation\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "b02f0d94-6d1a-41bf-aaad-1abc9d6794bb",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "availabilityCheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"customer\": {\n        \"subscriberId\": \"{{subscriberId}}\"\n    },\n    \"address\": {\n        \"id\": \"{{id}}\",\n        \"complement\": {\n            \"complements\": [\n                \"{{complements}}\"\n            ]\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"control\": {\n    \"type\": \"E\",\n    \"code\": 401,\n    \"message\": \"Unauthorized\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "d3e5cb56-a11a-43fa-8eec-ffe3627813ef",
+          "name": "Forbidden - Scope Not Permitted",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "availabilityCheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"customer\": {\n        \"subscriberId\": \"{{subscriberId}}\"\n    },\n    \"address\": {\n        \"id\": \"{{id}}\",\n        \"complement\": {\n            \"complements\": [\n                \"{{complements}}\"\n            ]\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"control\": {\n    \"type\": \"E\",\n    \"code\": 403,\n    \"message\": \"Forbidden - Scope Not Permitted\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "085e65a5-8a29-40e9-b19e-1dfa7284bc96",
+          "name": "Not Found",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "availabilityCheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"customer\": {\n        \"subscriberId\": \"{{subscriberId}}\"\n    },\n    \"address\": {\n        \"id\": \"{{id}}\",\n        \"complement\": {\n            \"complements\": [\n                \"{{complements}}\"\n            ]\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"control\": {\n    \"type\": \"E\",\n    \"code\": 404,\n    \"message\": \"Not Found\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "0b276ad9-53db-409d-b38c-0d5317446a91",
+          "name": "Too Many Requests - Exceeded Quota",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "availabilityCheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"customer\": {\n        \"subscriberId\": \"{{subscriberId}}\"\n    },\n    \"address\": {\n        \"id\": \"{{id}}\",\n        \"complement\": {\n            \"complements\": [\n                \"{{complements}}\"\n            ]\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Too Many Requests",
+          "code": 429,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"control\": {\n    \"type\": \"E\",\n    \"code\": 429,\n    \"message\": \"Too Many Requests - Exceeded Quota\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "95b84886-3500-4d54-ba5a-be660e13d88b",
+          "name": "Internal Server Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "availabilityCheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"customer\": {\n        \"subscriberId\": \"{{subscriberId}}\"\n    },\n    \"address\": {\n        \"id\": \"{{id}}\",\n        \"complement\": {\n            \"complements\": [\n                \"{{complements}}\"\n            ]\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"control\": {\n    \"type\": \"T\",\n    \"code\": 500,\n    \"message\": \"Internal Server Error\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "13b08936-9979-4bdc-9a12-7dd098c89bb4",
+          "name": "Service Unavailable",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "availabilityCheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"customer\": {\n        \"subscriberId\": \"{{subscriberId}}\"\n    },\n    \"address\": {\n        \"id\": \"{{id}}\",\n        \"complement\": {\n            \"complements\": [\n                \"{{complements}}\"\n            ]\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Service Unavailable",
+          "code": 503,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"control\": {\n    \"type\": \"T\",\n    \"code\": 503,\n    \"message\": \"Service Unavailable\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "f4eeedd4-8496-40e3-81c1-bfe390e36212",
+          "name": "Gateway Timeout",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "availabilityCheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"customer\": {\n        \"subscriberId\": \"{{subscriberId}}\"\n    },\n    \"address\": {\n        \"id\": \"{{id}}\",\n        \"complement\": {\n            \"complements\": [\n                \"{{complements}}\"\n            ]\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Gateway Timeout",
+          "code": 504,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"control\": {\n    \"type\": \"T\",\n    \"code\": 504,\n    \"message\": \"Gateway Timeout\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              " \n// ********RoostGPT********\n/*\nTest generated by RoostGPT for test amanPostman16 using AI Type Azure Open AI and AI Model Inference\n\n\nTest generated for availabilityCheck for http method type post in postman framework\n\n*/\n\n// ********RoostGPT********\n\n\nconst ld = require('lodash');\nlet responseData;\nconst contentType = pm.response.headers.get('Content-Type');\nif(contentType === \"application/xml\"){\n    var parseString = require('xml2js').parseString;\n    parseString(pm.response.body, function (err,result) {\n      if (err) {\n        console.error('Error parsing XML:', err);\n      } else {\n        responseData = result;  \n      }\n    });\n} else{\n    responseData = pm.response.json();\n}\nif (pm.variables.get(\"statusCode\")) {\n  // Compare the statusCode variable with the response code for assertion\n    pm.expect(parseInt(pm.variables.get(\"statusCode\"))).to.be.equal(pm.response.code);\n}\n\n// let responseTime = 800\n// pm.expect(pm.response.responseTime).to.be.below(responseTime);\n\nif (pm.response.code == 200){\n    pm.test(\"successful operation\", function () {\n        pm.expect(pm.response.status).to.be.eql(\"OK\");\n          pm.response.to.have.header(\"Content-Type\");\n\n          pm.test('Response has the `control` field',function(){\n            pm.expect(responseData.control).to.exist.and.to.be.a(\"object\");\n          pm.expect(responseData.control).to.eql(JSON.parse(pm.request.body).control);\n\n          })\n\n          pm.test('Response has the `resource` field',function(){\n            pm.expect(responseData.resource).to.exist.and.to.be.a(\"object\");\n          pm.expect(responseData.resource).to.eql(JSON.parse(pm.request.body).resource);\n\n          })\n\n          });\n\n        }\n\nif (pm.response.code == 400){\n    pm.test(\"Bad Request\", function () {\n        pm.expect(pm.response.status).to.be.eql(\"Bad Request\");\n          pm.response.to.have.header(\"Content-Type\");\n\n          pm.test('Response has the `control` field',function(){\n            pm.expect(responseData.control).to.exist.and.to.be.a(\"object\");\n          pm.expect(responseData.control).to.eql(JSON.parse(pm.request.body).control);\n\n          })\n\n          });\n\n        }\n\nif (pm.response.code == 401){\n    pm.test(\"Unauthorized\", function () {\n        pm.expect(pm.response.status).to.be.eql(\"Unauthorized\");\n          pm.response.to.have.header(\"Content-Type\");\n\n          pm.test('Response has the `control` field',function(){\n            pm.expect(responseData.control).to.exist.and.to.be.a(\"object\");\n          pm.expect(responseData.control).to.eql(JSON.parse(pm.request.body).control);\n\n          })\n\n          });\n\n        }\n\nif (pm.response.code == 403){\n    pm.test(\"Forbidden - Scope Not Permitted\", function () {\n        pm.expect(pm.response.status).to.be.eql(\"Forbidden\");\n          pm.response.to.have.header(\"Content-Type\");\n\n          pm.test('Response has the `control` field',function(){\n            pm.expect(responseData.control).to.exist.and.to.be.a(\"object\");\n          pm.expect(responseData.control).to.eql(JSON.parse(pm.request.body).control);\n\n          })\n\n          });\n\n        }\n\nif (pm.response.code == 404){\n    pm.test(\"Not Found\", function () {\n        pm.expect(pm.response.status).to.be.eql(\"Not Found\");\n          pm.response.to.have.header(\"Content-Type\");\n\n          pm.test('Response has the `control` field',function(){\n            pm.expect(responseData.control).to.exist.and.to.be.a(\"object\");\n          pm.expect(responseData.control).to.eql(JSON.parse(pm.request.body).control);\n\n          })\n\n          });\n\n        }\n\nif (pm.response.code == 429){\n    pm.test(\"Too Many Requests - Exceeded Quota\", function () {\n        pm.expect(pm.response.status).to.be.eql(\"Too Many Requests\");\n          pm.response.to.have.header(\"Content-Type\");\n\n          pm.test('Response has the `control` field',function(){\n            pm.expect(responseData.control).to.exist.and.to.be.a(\"object\");\n          pm.expect(responseData.control).to.eql(JSON.parse(pm.request.body).control);\n\n          })\n\n          });\n\n        }\n\nif (pm.response.code == 500){\n    pm.test(\"Internal Server Error\", function () {\n        pm.expect(pm.response.status).to.be.eql(\"Internal Server Error\");\n          pm.response.to.have.header(\"Content-Type\");\n\n          pm.test('Response has the `control` field',function(){\n            pm.expect(responseData.control).to.exist.and.to.be.a(\"object\");\n          pm.expect(responseData.control).to.eql(JSON.parse(pm.request.body).control);\n\n          })\n\n          });\n\n        }\n\nif (pm.response.code == 503){\n    pm.test(\"Service Unavailable\", function () {\n        pm.expect(pm.response.status).to.be.eql(\"Service Unavailable\");\n          pm.response.to.have.header(\"Content-Type\");\n\n          pm.test('Response has the `control` field',function(){\n            pm.expect(responseData.control).to.exist.and.to.be.a(\"object\");\n          pm.expect(responseData.control).to.eql(JSON.parse(pm.request.body).control);\n\n          })\n\n          });\n\n        }\n\nif (pm.response.code == 504){\n    pm.test(\"Gateway Timeout\", function () {\n        pm.expect(pm.response.status).to.be.eql(\"Gateway Timeout\");\n          pm.response.to.have.header(\"Content-Type\");\n\n          pm.test('Response has the `control` field',function(){\n            pm.expect(responseData.control).to.exist.and.to.be.a(\"object\");\n          pm.expect(responseData.control).to.eql(JSON.parse(pm.request.body).control);\n\n          })\n\n          });\n\n        }\n"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    },
+    {
+      "type": "integer",
+      "value": 200,
+      "key": "statusCode"
+    }
+  ],
+  "info": {
+    "_postman_id": "c3879d90-b273-4e70-b0bf-1b71cd44a612",
+    "name": "ResourcePoolManagement",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
