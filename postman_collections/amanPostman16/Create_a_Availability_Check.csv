@@ -1,0 +1,12 @@
+subscriberId,id,complements,statusCode,scenario
+1001,1,successful operation,200,successful operation
+1002,2,successful operation,200,successful operation
+1003,3,successful operation,200,successful operation
+1004,4,OSB Validate action failed validation,400,Bad Request
+1005,5,Unauthorized,401,Unauthorized
+1006,6,Forbidden - Scope Not Permitted,403,Forbidden - Scope Not Permitted
+1007,7,Not Found,404,Not Found
+1008,8,Too Many Requests - Exceeded Quota,429,Too Many Requests - Exceeded Quota
+1009,9,Internal Server Error,500,Internal Server Error
+1010,10,Service Unavailable,503,Service Unavailable
+1011,11,Gateway Timeout,504,Gateway Timeout
