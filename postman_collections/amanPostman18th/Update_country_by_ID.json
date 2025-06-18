@@ -1,0 +1,57 @@
+[
+  {
+    "id": "32",
+    "name": "INDIA",
+    "code": "IND",
+    "currencies_0": "INR",
+    "currencies_1": "USD",
+    "default_currency": "INR",
+    "is_active": 1,
+    "statusCode": 200,
+    "scenario": "Country updated successfully"
+  },
+  {
+    "id": "33",
+    "name": "USA",
+    "code": "US",
+    "currencies_0": "USD",
+    "currencies_1": "CAD",
+    "default_currency": "USD",
+    "is_active": 1,
+    "statusCode": 200,
+    "scenario": "Country updated successfully"
+  },
+  {
+    "id": "34_invalid",
+    "name": "INVALID_NAME",
+    "code": "INVALID_CODE",
+    "currencies_0": "INVALID_CURRENCY",
+    "currencies_1": "INVALID_CURRENCY2",
+    "default_currency": "INVALID_DEFAULT_CURRENCY",
+    "is_active": 999,
+    "statusCode": 400,
+    "scenario": "Bad Request"
+  },
+  {
+    "id": "35_extra",
+    "name": "FRANCE",
+    "code": "FR",
+    "currencies_0": "EURO",
+    "currencies_1": "GBP",
+    "default_currency": "EURO",
+    "is_active": 0,
+    "statusCode": 200,
+    "scenario": "Country updated successfully"
+  },
+  {
+    "id": "36_invalid",
+    "name": "123456",
+    "code": "@@INVALID_CODE",
+    "currencies_0": "!@#INVALID",
+    "currencies_1": "$$$INVALID_CURRENCY",
+    "default_currency": "NULL",
+    "is_active": -1,
+    "statusCode": 500,
+    "scenario": "Internal Server Error"
+  }
+]
