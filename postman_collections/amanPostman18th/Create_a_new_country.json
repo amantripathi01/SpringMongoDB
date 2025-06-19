@@ -1,0 +1,52 @@
+[
+  {
+    "name": "INDIA",
+    "code": "IND",
+    "currencies_0": "INR",
+    "currencies_1": "USD",
+    "default_currency": "INR",
+    "is_active": 1,
+    "statusCode": 201,
+    "scenario": "Country created successfully"
+  },
+  {
+    "name": "UNITED STATES",
+    "code": "USA",
+    "currencies_0": "USD",
+    "currencies_1": "EUR",
+    "default_currency": "USD",
+    "is_active": 1,
+    "statusCode": 201,
+    "scenario": "Country created successfully"
+  },
+  {
+    "name": "GERMANY",
+    "code": "DEU",
+    "currencies_0": "EUR",
+    "currencies_1": "GBP",
+    "default_currency": "EUR",
+    "is_active": 1,
+    "statusCode": 201,
+    "scenario": "Country created successfully"
+  },
+  {
+    "name": "INVALID_COUNTRY_!",
+    "code": "!!!",
+    "currencies_0": "€€€",
+    "currencies_1": "!USD",
+    "default_currency": "XXX",
+    "is_active": "active",
+    "statusCode": 400,
+    "scenario": "Bad Request"
+  },
+  {
+    "name": "",
+    "code": "XYZ123",
+    "currencies_0": "",
+    "currencies_1": null,
+    "default_currency": "",
+    "is_active": -1,
+    "statusCode": 500,
+    "scenario": "Internal Server Error"
+  }
+]

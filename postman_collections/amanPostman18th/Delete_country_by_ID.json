@@ -1,0 +1,27 @@
+[
+  {
+    "id": 32,
+    "statusCode": 200,
+    "scenario": "Success"
+  },
+  {
+    "id": 44,
+    "statusCode": 200,
+    "scenario": "Success"
+  },
+  {
+    "id": "invalid_id",
+    "statusCode": 400,
+    "scenario": "Bad Request"
+  },
+  {
+    "id": "string_instead_of_integer",
+    "statusCode": 500,
+    "scenario": "Server Error"
+  },
+  {
+    "id": -1,
+    "statusCode": 422,
+    "scenario": "Unprocessable Entity"
+  }
+]

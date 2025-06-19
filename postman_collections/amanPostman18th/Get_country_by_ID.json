@@ -1,0 +1,27 @@
+[
+  {
+    "id": "api_test_32",
+    "statusCode": 200,
+    "scenario": "Success"
+  },
+  {
+    "id": "invalid_id!",
+    "statusCode": 400,
+    "scenario": "Bad Request"
+  },
+  {
+    "id": "api_sample_45",
+    "statusCode": 200,
+    "scenario": "Success"
+  },
+  {
+    "id": "",
+    "statusCode": 404,
+    "scenario": "ID Not Found"
+  },
+  {
+    "id": "test_api_99",
+    "statusCode": 200,
+    "scenario": "Success"
+  }
+]
