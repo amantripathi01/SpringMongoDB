@@ -1,0 +1,70 @@
+### Test Scenarios for User Story: **Jira File Upload in Backend Supports XML Files**
+
+#### Functional Test Cases:
+1. **Test Case: Upload XML File**
+   - **Input:** Upload a valid XML Jira file through the UI.
+   - **Expected Output:** The file is successfully accepted and uploaded to the backend.
+   - **Edge Case:** Test with an XML file of the maximum allowed file size.
+
+2. **Test Case: Block Non-XML Files**
+   - **Input:** Attempt to upload a non-XML file (e.g., PDF, DOCX, JSON, or TXT) through the UI.
+   - **Expected Output:** The system should block the file and display an error message like “Only XML files are supported.”
+   - **Edge Case:** Test with a common file type like .csv or .exe to ensure it is rejected.
+
+3. **Test Case: Empty File Upload**
+   - **Input:** Attempt to upload an empty (zero-byte) XML file.
+   - **Expected Output:** The system should block the upload and display an error message like “Invalid file format or empty file.”
+
+4. **Test Case: Invalid XML File with Incorrect Schema**
+   - **Input:** Upload an XML file that does not conform to the Jira schema.
+   - **Expected Output:** The system should block the upload and display an error message like “Invalid XML file schema.”
+   - **Edge Case:** Upload an XML file with an unexpected schema but matching the .xml extension to ensure validation logic checks the schema structure.
+
+5. **Test Case: Simultaneous File Upload**
+   - **Input:** Attempt to upload multiple files at the same time through the UI.
+   - **Expected Output:** The system should support one file upload at a time and block multiple simultaneous uploads.
+   - **Edge Case:** Ensure non-XML files are rejected even if uploaded alongside a valid XML file.
+
+6. **Test Case: Success Confirmation**
+   - **Input:** Upload a valid XML Jira file.
+   - **Expected Output:** After successful upload, a confirmation message should be displayed: “File uploaded successfully.”
+   - **Edge Case:** Test the message in varied network conditions to ensure it appears on success.
+
+7. **Test Case: Duplicate File Upload**
+   - **Input:** Attempt to upload the same XML file twice.
+   - **Expected Output:** The system should either accept both instances independently or advise the user if duplicates are not allowed based on backend rules.
+
+#### Non-Functional Test Cases:
+1. **Test Case: File Upload Performance**
+   - **Input:** Upload a file of large size (e.g., close to the max allowed limit).
+   - **Expected Output:** The file upload completes within the defined time (e.g., < 3 seconds).
+
+2. **Test Case: Error Message Responsiveness**
+   - **Input:** Upload an unsupported file type with different internet speeds.
+   - **Expected Output:** Error messages should appear promptly in both low and high bandwidth conditions.
+
+3. **Test Case: Compatibility Across Browsers**
+   - **Input:** Test file upload functionality on major browsers (Chrome, Firefox, Safari, Edge).
+   - **Expected Output:** The upload functionality should behave consistently across all browsers.
+
+4. **Test Case: UI Responsiveness**
+   - **Input:** Resize the UI and attempt file upload at different screen sizes (e.g., mobile, tablet, desktop).
+   - **Expected Output:** Upload error/success messages and upload buttons should adapt seamlessly to screen size changes.
+
+5. **Test Case: Security Validation**
+   - **Input:** Attempt to upload a malicious file disguised as an XML file (e.g., with dangerous scripts embedded).
+   - **Expected Output:** The system should block the upload and prevent any malicious activities.
+
+6. **Test Case: Stress/Load Testing**
+   - **Input:** Simultaneous upload attempts of XML files from 100 users.
+   - **Expected Output:** The system should handle the load without crashing, and response time should stay within limits.
+
+7. **Test Case: Backend Exception Handling**
+   - **Input:** Simulate backend failure (e.g., server crash or DB connectivity issue) and attempt file upload.
+   - **Expected Output:** An appropriate error message should be shown, such as “File upload not available. Try again later.”
+
+---
+
+### Notes:
+- All scenarios aim to ensure compliance with supporting **only XML files** for upload, as stated in the user story.
+- Priority is on blocking non-XML files, ensuring successful XML uploads, and handling edge cases effectively.
