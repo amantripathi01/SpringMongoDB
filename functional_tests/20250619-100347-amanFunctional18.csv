@@ -1,0 +1,14 @@
+Upload valid XML file successfully
+Block non-XML files during upload
+Block empty XML file upload
+Block invalid XML file with incorrect schema
+Block simultaneous file upload
+Confirmation message for successful XML file upload
+Handle duplicate file upload rules
+Validate file upload performance
+Responsiveness of error messages
+Browser compatibility for file upload
+UI responsiveness for different screen sizes
+Block malicious XML file uploads
+Handle stress/load testing
+Backend exception handling during file upload
