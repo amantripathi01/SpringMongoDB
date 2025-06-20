@@ -1,0 +1,16 @@
+Retrieve all countries successfully with valid headers
+Retrieve countries with missing required headers
+Retrieve countries with invalid header values
+Successfully create a new country
+Validation error for missing required attributes in country creation
+Duplicate country code during creation
+Fetch a country successfully by ID
+Fetching a country fails due to non-existent ID
+Successfully update a country by ID
+Update a country fails due to invalid ID
+Successfully delete a country by ID
+Cannot delete a country that does not exist
+Test response time for "/country" GET
+Perform load testing with high concurrent requests for "/country" GET
+Security testing for authentication on "/country" POST
+Load testing for "/country/{id}" GET
