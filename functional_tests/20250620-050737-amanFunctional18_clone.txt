@@ -1,0 +1,190 @@
+# Functional Test Cases
+
+## `/country` - GET (Get all countries)
+
+### Test Case 1: Retrieve all countries successfully
+- **Input Values**:
+  - Header `app-identifier: d645d2b40811f5672c93794d8622da45588f32cdb2ed85336475bf479e5d`
+  - Header `customer-secret-key: 12546580645c21b8a3529680f455f715b6b6829da8976bdfd2e9d51181fe`
+- **Expected Output**:
+  - Status: `success`
+  - Message: `Data fetched successfully`
+  - Data: Array of countries with properties as defined in the `countrySchema`
+  - Error Info: `null`
+- **Edge Cases**:
+  - No countries exist in the database (empty array in `data.countries`)
+
+### Test Case 2: Missing required headers
+- **Input Values**:
+  - Missing `app-identifier` or `customer-secret-key` headers
+- **Expected Output**:
+  - Status: `error`
+  - Message: `Missing required headers`
+  - Error Info: Description of the missing header(s)
+  
+### Test Case 3: Invalid headers provided
+- **Input Values**:
+  - Header `app-identifier: invalid_value`
+  - Header `customer-secret-key: invalid_value`
+- **Expected Output**:
+  - Status: `error`
+  - Message: `Invalid header values`
+  - Error Info: Description of invalid headers
+  
+---
+
+## `/country` - POST (Create a new country)
+
+### Test Case 4: Successfully create a country
+- **Input Values**:
+  - Header `app-identifier`, `customer-secret-key`
+  - JSON Body:
+    ```json
+    {
+      "name": "INDIA",
+      "code": "IND",
+      "currencies": ["INR", "USD", "EURO"],
+      "default_currency": "INR",
+      "is_active": 1
+    }
+    ```
+- **Expected Output**:
+  - Status: `success`
+  - Message: `Country created successfully`
+  - Data: Object of the newly created country
+  - Error Info: `null`
+  
+### Test Case 5: Validation error for missing required attributes
+- **Input Values**:
+  - Missing `name` or `code` in the request body
+- **Expected Output**:
+  - Status: `error`
+  - Message: `Validation error`
+  - Error Info: Description of validation errors
+  
+### Test Case 6: Duplicate country code
+- **Input Values**:
+  - JSON Body with `code` already existing in another country
+  - Example:
+    ```json
+    {
+      "name": "Duplicate Country",
+      "code": "IND",
+      "currencies": ["INR", "USD"],
+      "default_currency": "USD",
+      "is_active": 1
+    }
+    ```
+- **Expected Output**:
+  - Status: `error`
+  - Message: `Country code already exists`
+  - Error Info: Description of constraint violation
+  
+---
+
+## `/country/{id}` - GET (Get country by ID)
+
+### Test Case 7: Fetch a country successfully
+- **Input Values**:
+  - Header `app-identifier`, `customer-secret-key`
+  - Path parameter: `id = 32`
+- **Expected Output**:
+  - Status: `success`
+  - Message: `Data fetched successfully`
+  - Data: Country object matching the ID
+  - Error Info: `null`
+
+### Test Case 8: Country ID not found
+- **Input Values**:
+  - Path parameter: `id = 999999` (non-existent ID)
+- **Expected Output**:
+  - Status: `error`
+  - Message: `Country with ID not found`
+  - Error Info: `null`
+  
+---
+
+## `/country/{id}` - PUT (Update country by ID)
+
+### Test Case 9: Successfully update a country
+- **Input Values**:
+  - Header `app-identifier`, `customer-secret-key`
+  - Path parameter: `id = 32`
+  - JSON Body:
+    ```json
+    {
+      "name": "NEW NAME",
+      "code": "NEW",
+      "currencies": ["USD"],
+      "default_currency": "USD",
+      "is_active": 1
+    }
+    ```
+- **Expected Output**:
+  - Status: `success`
+  - Message: `Country updated successfully`
+  - Data: Updated country object
+  - Error Info: `null`
+  
+### Test Case 10: Update fails due to invalid country ID
+- **Input Values**:
+  - Path parameter: `id = 999999` (non-existent ID)
+- **Expected Output**:
+  - Status: `error`
+  - Message: `Country ID not found`
+  - Error Info: `null`
+
+---
+
+## `/country/{id}` - DELETE (Delete country by ID)
+
+### Test Case 11: Successfully delete a country
+- **Input Values**:
+  - Header `app-identifier`, `customer-secret-key`
+  - Path parameter: `id = 32`
+- **Expected Output**:
+  - Status: `success`
+  - Message: `Country deleted successfully`
+  - Error Info: `null`
+
+### Test Case 12: Cannot delete non-existing country
+- **Input Values**:
+  - Path parameter: `id = 999999` (non-existent ID)
+- **Expected Output**:
+  - Status: `error`
+  - Message: `Country not found to delete`
+  - Error Info: `null`
+  
+---
+
+# Non-Functional Test Cases
+
+### Test Case 13: Testing response time for `/country` GET
+- **Input Values**:
+  - Header `app-identifier`, `customer-secret-key`
+- **Expected Output**:
+  - Ensure response time is less than 300ms for normal conditions
+  
+### Test Case 14: Handle high concurrent requests for `/country` GET
+- **Scenario**:
+  - Simulate 500+ concurrent requests
+- **Expected Output**:
+  - API responses consistently without failure or timeout
+  
+### Test Case 15: Security testing for authentication
+- **Scenario**:
+  - Attempt to access `/country` POST without providing valid bearer token
+- **Expected Output**:
+  - Status: `error`
+  - Message: `Unauthorized access`
+  - Error Info: JWT validation failure
+  
+### Test Case 16: Load testing for `/country/{id}` GET
+- **Scenario**:
+  - Fetch countries by ID repeatedly over 1,000 requests
+- **Expected Outcome**:
+  - API handles high load efficiently without breaking or producing inconsistent results
+  
+---
+
+Each test ensures critical functionalities, high performance, and robust security based on the OpenAPI specification provided.
