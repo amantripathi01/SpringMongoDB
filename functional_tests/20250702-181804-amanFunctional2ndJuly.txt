@@ -1,0 +1,163 @@
+### Test Cases for ZBIO-6550  
+Below is a structured list of **Functional** and **Non-Functional** test cases for the user story described in the ticket.  
+
+---
+
+#### **Functional Test Cases**
+
+##### **1. Test the updated structure of `advancedDetails` object**  
+- **Input Values:**  
+  - `advancedDetails` object with valid structure as per the new format.  
+    ```json
+    {
+      "skippedMethods": 6, 
+      "existingTestPresent": 0, 
+      "notSupported": 4, 
+      "toBeProcessed": 2,
+      "totalTestFiles": 12,
+      "successfulTests": 5,
+      "testsWithRunTimeErrors": 2,
+      "testsWithCompilationErrors": 7
+    }
+    ```  
+- **Expected Output:**  
+  - The application correctly utilizes `advancedDetails` data (e.g., shows metrics such as `Generated` column).  
+    ```
+    * 12 Test (for 14 methods) *
+    ```
+  
+- **Edge Cases:**  
+  - Provide invalid values (e.g., null or missing fields) in `advancedDetails`. Expect error handling in the API or frontend with an appropriate error message.  
+
+---
+
+##### **2. Remove `csvFileDetails` and `csvFiles` objects from the backend**  
+- **Input Values:**  
+  - Make API call where previously `csvFileDetails` and `csvFiles` were used. Update relevant code to pull data directly from `advancedDetails`.  
+- **Expected Output:**  
+  - Backend does not respond with `csvFileDetails` or `csvFiles` and shows seamless functionality using `advancedDetails`.  
+
+- **Edge Cases:**  
+  - Ensure no part of the system tries to access the removed objects (`null pointer exception` should not occur).  
+
+---
+
+##### **3. Indexes replaced with scenario names in Integration Tests**  
+- **Input Values:**  
+  - Integration data with scenarios such as:  
+    ```json
+    [
+      { "methodName": "Error handling and validation", "status": "successfully_generated" },
+      { "methodName": "Bulk operations", "status": "successfully_generated" }
+    ]
+    ```
+- **Expected Output:**  
+  - Scenario names such as `"Error handling and validation"` and `"Bulk operations"` appear in the table column instead of indexes (e.g., 1, 2, etc.).  
+
+- **Edge Cases:**  
+  - No `methodName` provided - the integration test should handle and display a fallback name gracefully (e.g., `"Unnamed Scenario"`).  
+
+---
+
+##### **4. Removal of `methodScanned`, `methodSuccess`, `methodFailed`, etc., replaced by `advancedDetails` metrics**  
+- **Input Values:**  
+  - Test backend and UI where new metrics `skippedMethods`, `successfulTests`, `testsWithRunTimeErrors`, etc., are calculated.  
+- **Expected Output:**  
+  - Calculations are correct. E.g., `Generated` column shows:  
+    ```
+    12 Test (for 14 Methods)  
+    ```
+    where `totalTests = totalTestFiles + existingTestPresent + toBeProcessed`.  
+
+- **Edge Cases:**  
+  - Zero values in all fields (e.g., `totalTestFiles = 0`) — Ensure display handles such cases gracefully without breaking.  
+
+---
+
+##### **5. Integration Tests for New UI display (empty data issue)**  
+- **Input Values:**  
+  - Trigger an integration test where backend data returned is empty:  
+    ```json
+    { "advancedDetails": {} }
+    ```  
+- **Expected Output:**  
+  - Display appropriate message on UI such as:  
+    ```
+    "No data found, please try again later."
+    ```  
+
+---
+
+#### **Non-Functional Test Cases**
+
+##### **1. Performance Test for New `advancedDetails` Structure**  
+- **Input Values:**  
+  - Stress test API response with large data sets:  
+    ```json
+    {
+      "skippedMethods": 10000, 
+      "existingTestPresent": 5000, 
+      "notSupported": 3000, 
+      "toBeProcessed": 2000,
+      "totalTestFiles": 15000,
+      "successfulTests": 8000,
+      "testsWithRunTimeErrors": 1000,
+      "testsWithCompilationErrors": 6000
+    }
+    ```  
+- **Expected Output:**  
+  - Application responds within acceptable limits (e.g., <2 seconds) without crashes.
+
+---
+
+##### **2. Compatibility Testing (Old vs. New Data)**  
+- **Input Values:**  
+  - Test old triggers:  
+    - `http://localhost:4200/roostgpt/insights?trigger_id=484d0426-76c3-4104-b9bb-c70fe6d701b3`    
+  - Test new triggers:  
+    - `http://localhost:4200/roostgpt/insights?trigger_id=14f96ab9-aa79-41a8-866c-c7538786e3c5`  
+- **Expected Output:**  
+  - Ensure backward compatibility: Old triggers do not break the application.  
+
+---
+
+##### **3. Verification for UI Consistency of Updated Tables**  
+- **Input Values:**  
+  - Provide data to populate scenarios, e.g.:  
+    ```json
+    [
+      {
+        "methodName": "Complete pet store management flow",
+        "status": "successfully_generated"
+      },
+      {
+        "methodName": "Bulk operations",
+        "status": "successfully_generated"
+      }
+    ]
+    ```  
+- **Expected Output:**  
+  - UI renders the updated display consistently, including alignment and design elements (e.g., scenario names properly shown).  
+
+---
+
+##### **4. Security Validation for API Changes (`advancedDetails`)**  
+- **Input Values:**  
+  - Perform API requests with invalid authorization tokens (e.g., expired token, no token).  
+- **Expected Output:**  
+  - Proper error handling such as HTTP 401 Unauthorized or API rejects the request appropriately.  
+
+---
+
+##### **5. Load Testing for Integration Insights Page**  
+- **Input Values:**  
+  - Simulate concurrent users accessing endpoints like:  
+    - `http://localhost:4200/roostgpt/insights?trigger_id=868eeb69-5795-4db0-ac7c-27192a8a1e76`  
+  - Increase load progressively to 1000+ requests per second.  
+- **Expected Output:**  
+  - Page loads without degradation (target response time <2 seconds).  
+
+---
+
+### Notes:  
+- These test cases ensure **functional correctness**, **UI consistency**, **performance**, and **security compliance** for the updated changes in `advancedDetails`, removal of `csvFileDetails`, and overall impact on the `approost` implementation.  
