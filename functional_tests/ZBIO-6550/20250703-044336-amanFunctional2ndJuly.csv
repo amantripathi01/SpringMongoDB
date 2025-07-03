@@ -1,0 +1,12 @@
+Validate the updated "advancedDetails" structure with valid input
+Validate error handling for "advancedDetails" with missing fields
+Ensure "csvFileDetails" and "csvFiles" are removed
+Verify index replacement with scenario names in integration tests
+Test fallback for missing "methodName" in integration tests
+Validate calculations for "advancedDetails" metrics
+Test for empty "advancedDetails" data handling
+Performance test for large "advancedDetails" structure
+Validate backward compatibility for old vs. new triggers
+Ensure UI consistency for updated tables
+Test security validation with invalid authorization token
+Load test for integration insights page
