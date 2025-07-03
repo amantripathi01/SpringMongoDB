@@ -1,0 +1,9 @@
+AdvancedDetails structure changes
+Removal of csvFileDetails and csvFiles objects
+Generated column calculations
+Data integration issues (empty table and incorrect indexes display)
+Backend compatibility
+Performance under high data volume
+Application responsiveness (UI/UX)
+Security testing for malicious inputs
+Scalability for concurrent users

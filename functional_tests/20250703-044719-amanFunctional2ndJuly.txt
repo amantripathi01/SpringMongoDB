@@ -1,0 +1,124 @@
+### Functional Test Cases
+
+#### Scenario: AdvancedDetails structure changes
+- **Objective**: Ensure `AdvancedDetails` structure changes are properly implemented and functional in the `approost` application.
+- **Input**: Use the updated `AdvancedDetails` data structure sample:
+  ```
+  {
+    "skippedMethods": 6,
+    "existingTestPresent": 0,
+    "notSupported": 4,
+    "toBeProcessed": 2,
+    "totalTestFiles": 12,
+    "successfulTests": 5,
+    "testswithRunTimeErrors": 2,
+    "testWithCompilationErrors": 7
+  }
+  ```
+- **Expected Output**: 
+  - `AdvancedDetails` structure data is retrieved correctly.
+  - All methods reference correct metrics from `AdvancedDetails`.
+  - Other redundant objects such as `csvFilesDetails` and `csvFiles` are not referenced in the implementation.
+- **Edge Cases**:
+  - Empty `AdvancedDetails` data should not break the application.
+  - Missing fields in `AdvancedDetails` should display an appropriate error or fallback behavior.
+
+#### Scenario: Removal of csvFileDetails and csvFiles objects
+- **Objective**: Verify redundant objects, `csvFileDetails` and `csvFiles`, are removed correctly and no backend functionality depends on them.
+- **Input**: 
+  - Access endpoints linked to the `AdvancedDetails` structure.
+  - Test backend responses and logs to ensure no dependency on `csvFileDetails` and `csvFiles`.
+- **Expected Output**: 
+  - Application functions as expected utilizing only the `AdvancedDetails` object without errors.
+- **Edge Cases**:
+  - Any references to removed objects should result in appropriate error logs or messages.
+
+#### Scenario: Generated column calculations
+- **Objective**: Validate the values displayed in the `Generated` column are correct based on the provided formula:  
+  ```
+  totalTestFiles / totalTests (totalTestFiles + existingTestPresent + toBeProcessed)
+  ```
+- **Input**: Example data:  
+  ```
+  {
+    "totalTestFiles": 12,
+    "existingTestPresent": 2,
+    "toBeProcessed": 3
+  }
+  ```
+- **Expected Output**:
+  - Generated column displays:  
+    ```
+    *12 Tests (for 17 Methods)*  
+    ```
+  - Ensure values update dynamically depending on data changes.
+- **Edge Cases**:
+  - Division by zero when all metrics are zero should be handled gracefully (e.g., `0 Tests (for 0 Methods)`).
+
+#### Scenario: Data integration issues (empty table and incorrect indexes display)
+- **Objective**: Ensure integration tests display appropriate data without showing empty tables or incorrect index names instead of scenario names.
+- **Input**: Simulate integration tests with updated `AdvancedDetails` and without `csvFilesDetails`.
+- **Expected Output**:
+  - The table correctly populates with data for all scenarios.
+  - Scenario names are displayed instead of index numbers.
+- **Edge Cases**:
+  - Handle cases where no data is available gracefully (e.g., display `No data found` message).
+  - Ensure mixed valid and empty data scenarios populate the table correctly.
+
+#### Scenario: Backend compatibility
+- **Objective**: Verify `approost` changes are compatible with backend updates (ZBIO-6580).
+- **Input**: Use the updated endpoints from backend for validation.
+- **Expected Output**:
+  - Compatible behavior between frontend (`approost`) and backend changes (`AdvancedDetails` structure).
+- **Edge Cases**:
+  - Ensure backward compatibility with older backend structures for unsupported environments.
+
+---
+
+### Non-Functional Test Cases
+
+#### Scenario: Performance under high data volume
+- **Objective**: Test application performance when handling large datasets in `AdvancedDetails`.
+- **Input**: Simulate a dataset with a large number of entries (e.g., 1 million rows in `AdvancedDetails`).
+- **Expected Output**:
+  - Application retrieves and displays data without significant latency (response time < 800ms).
+  - No crashes or memory consumption issues occur.
+- **Edge Cases**:
+  - Application must gracefully handle scenarios where data exceeds memory thresholds.
+
+#### Scenario: Application responsiveness (UI/UX)
+- **Objective**: Ensure UI remains responsive during data retrieval and manipulation processes.
+- **Input**: Perform data viewing, filtering, and refresh actions within the UI for the updated `AdvancedDetails` data structure.
+- **Expected Output**:
+  - The application remains responsive with no UI freezes.
+- **Edge Cases**:
+  - Ensure usability on slower internet connections or older devices.
+
+#### Scenario: Security testing
+- **Objective**: Verify application securely handles and processes sensitive API data from `AdvancedDetails`.
+- **Input**: Simulate malicious inputs (e.g., SQL injection, XSS, script attacks) in fields in `AdvancedDetails`.
+- **Expected Output**:
+  - All input is sanitized and filtered to prevent exploits.
+- **Edge Cases**:
+  - Ensure errors in sanitization do not affect functioning of valid data inputs.
+
+#### Scenario: Scalability for concurrent users
+- **Objective**: Test application performance under high concurrent user traffic testing the `AdvancedDetails` feature.
+- **Input**: Simulate 10,000 concurrent users accessing the feature simultaneously.
+- **Expected Output**:
+  - No significant degradation in performance (response time under load <2s).
+- **Edge Cases**:
+  - Test for failure scenarios under extreme concurrency (e.g., 100,000 users).
+
+---
+
+### Notes:
+- All mentioned scenarios should reference priority user inputs provided in the Jira ticket (e.g., URLs, metrics extraction formulas, backend pulls).
+- Testing environments include endpoints:  
+  - **New Data Integration Examples**:  
+    - `http://localhost:4200/roostgpt/insights?trigger_id=14f96ab9-aa79-41a8-866c-c7538786e3c5`
+    - `http://localhost:4200/roostgpt/insights?trigger_id=bde4d164-84ab-43e2-a405-d8cfbbf40cf0`
+  - **Old Data Validation Examples**:  
+    - `http://localhost:4200/roostgpt/insights?trigger_id=484d0426-76c3-4104-b9bb-c70fe6d701b3`
+    - `http://localhost:4200/roostgpt/insights?trigger_id=008f1604-48d1-4a40-9998-90608dc1dd01`.
+
