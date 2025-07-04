@@ -1,0 +1,67 @@
+### **Test Scenarios for Ticket ID: ZBIO-6758 - XML File Upload Check From UI**
+
+---
+
+#### **Functional Test Cases:**
+
+1. **Verify XML File Upload Functionality**
+   - **Input:** An XML file with valid content (e.g., `validFile.xml`).
+   - **Expected Output:** File is successfully uploaded without errors, and the UI displays a confirmation message indicating successful upload.
+   - **Edge Case:** Attempt uploading a very large XML file exceeding size limitations (e.g., 10MB, specifically testing backend size constraint).
+     - **Expected Output:** Appropriate error message is shown (e.g., "Uploaded file exceeds size limit").
+
+2. **Verify Upload Restriction for Non-XML Files**
+   - **Input:** A non-XML file uploaded (e.g., `.txt`, `.pdf`, `.jpg`).
+   - **Expected Output:** File upload is rejected, and the UI displays an error message (e.g., "Invalid file type. Only XML files are supported").
+   - **Edge Case:** Attempt uploading an XML file with incorrect extension (e.g., `file.xml.txt`).
+     - **Expected Output:** The UI rejects the file and displays an invalid file type error.
+
+3. **Validate UI Behavior for Unsupported File Extensions**
+   - **Input:** Various unsupported file formats attempted for upload (e.g., `.exe`, `.zip`, `.png`).
+   - **Expected Output:** The application correctly identifies non-XML files, blocks the upload, and provides a consistent error message for unsupported formats.
+
+4. **Verify Validation for Empty File Upload**
+   - **Input:** An empty XML file (file size = 0 bytes).
+   - **Expected Output:** File upload gets rejected, and the UI displays an appropriate error message (e.g., "File is empty. Please upload a valid XML file").
+
+5. **Verify Error Handling for Drag-and-Drop Upload Method**
+   - **Input:** Dragging a non-XML file (e.g., `.docx`) and dropping into the upload area.
+   - **Expected Output:** File is blocked, and a proper error message is displayed.
+
+6. **Validate Error Messaging Localization**
+   - **Input:** Uploading unsupported file formats on application with multiple language support (e.g., Spanish, French).
+   - **Expected Output:** Error messages appear in the appropriate language based on UI language settings.
+
+---
+
+#### **Non-Functional Test Cases:**
+
+1. **Verify Performance Under Load**
+   - **Input:** Attempt simultaneous file uploads (e.g., 50 users uploading XML files concurrently).
+   - **Expected Output:** The application handles the load with consistent response times without crashing or slowing down significantly.
+
+2. **Validate Upload Speed**
+   - **Input:** Upload an XML file of moderate size (e.g., 5MB).
+   - **Expected Output:** File uploads seamlessly within an acceptable upload time window (e.g., 5 seconds or less).
+   - **Edge Case:** Test upload of a borderline-sized file near the size limit (e.g., 9.9MB) to ensure performance remains optimal.
+
+3. **Ensure UI Responsiveness During File Upload**
+   - **Input:** Upload a file while interacting with other elements on the UI (e.g., navigation, clicking buttons).
+   - **Expected Output:** The UI remains responsive, and actions in other parts of the application are unaffected during file upload.
+
+4. **Check Compatibility Across Browsers**
+   - **Input:** Test file upload functionality on different browsers (e.g., Chrome, Firefox, Safari, Edge).
+   - **Expected Output:** The file upload feature behaves consistently across all major browsers.
+
+5. **Verify Security Measures**
+   - **Input:** Attempt to upload malicious XML files containing scripts or harmful data.
+   - **Expected Output:** The file upload is rejected, and security protocols prevent malicious content from being processed or executed (e.g., sanitize inputs and log appropriate warnings/errors).
+
+6. **Confirm Accessibility Standards**
+   - **Input:** Use assistive technologies (e.g., screen readers) to navigate the file upload section.
+   - **Expected Output:** The file upload UI is fully accessible, with descriptions and error messages clearly read aloud by tools like screen readers.
+
+---
+
+### **Summary**
+The above test cases comprehensively cover both functional and non-functional aspects of the "XML File Upload Check From UI" feature, ensuring adherence to requirements, optimal performance, security measures, accessibility, and cross-browser compatibility.
