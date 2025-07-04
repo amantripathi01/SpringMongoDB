@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="res/vis.min.js"></script>
+    <link href="res/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"main","id":1}];
+var items = [{"id":1,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_get[1.1:43]","start":1751595764800,"end":1751595764805,"title":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_get[1.1:43] 02:22:44.800-02:22:44.805 Validate GET \/country endpoint with valid headers","className":"failed"},{"id":2,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_delete[1.1:29]","start":1751595765152,"end":1751595765155,"title":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_delete[1.1:29] 02:22:45.152-02:22:45.155 Delete country by ID with valid headers and path parameter","className":"failed"},{"id":3,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_delete[2.1:39]","start":1751595765160,"end":1751595765165,"title":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_delete[2.1:39] 02:22:45.160-02:22:45.165 Delete country by ID with missing headers","className":"failed"},{"id":4,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_delete[3.1:50]","start":1751595765170,"end":1751595765174,"title":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_delete[3.1:50] 02:22:45.170-02:22:45.174 Delete country by ID with invalid path parameter","className":"failed"},{"id":5,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_get[1.1:44]","start":1751595764923,"end":1751595764926,"title":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_get[1.1:44] 02:22:44.923-02:22:44.926 Get country by ID","className":"failed"},{"id":6,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_get[1.2:44]","start":1751595764932,"end":1751595764935,"title":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_get[1.2:44] 02:22:44.932-02:22:44.935 Get country by ID","className":"failed"},{"id":7,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_get[1.3:44]","start":1751595764940,"end":1751595764943,"title":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_get[1.3:44] 02:22:44.940-02:22:44.943 Get country by ID","className":"failed"},{"id":8,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_put[1.1:53]","start":1751595764533,"end":1751595764539,"title":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_put[1.1:53] 02:22:44.533-02:22:44.539 Update country by ID with valid data","className":"failed"},{"id":9,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_put[2.1:78]","start":1751595764545,"end":1751595764549,"title":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_put[2.1:78] 02:22:44.545-02:22:44.549 Update country by ID with invalid data","className":"failed"},{"id":10,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_put[2.2:79]","start":1751595764555,"end":1751595764559,"title":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_id_put[2.2:79] 02:22:44.555-02:22:44.559 Update country by ID with invalid data","className":"failed"},{"id":11,"group":1,"content":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_post[1.1:53]","start":1751595763287,"end":1751595763875,"title":"src\/test\/java\/com\/telusko\/api_tests\/Country3\/country_post[1.1:53] 02:22:43.287-02:22:43.875 Create a new country","className":"failed"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>
