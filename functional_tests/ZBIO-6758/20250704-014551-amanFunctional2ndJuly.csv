@@ -1,0 +1,16 @@
+Verify XML File Upload Functionality
+Verify Upload Restriction for Large XML Files
+Verify Upload Restriction for Non-XML Files
+Verify Upload Restriction for Incorrect File Extension
+Validate UI Behavior for Unsupported File Extensions
+Verify Validation for Empty File Upload
+Verify Error Handling for Drag-and-Drop Upload Method
+Validate Error Messaging Localization for Unsupported Files (Spanish)
+Validate Error Messaging Localization for Unsupported Files (French)
+Verify Performance Under Load
+Validate Upload Speed
+Edge Case Test for Borderline-Sized File Upload
+Ensure UI Responsiveness During File Upload
+Check Compatibility Across Browsers
+Verify Security Measures for Malicious Files
+Confirm Accessibility Standards
