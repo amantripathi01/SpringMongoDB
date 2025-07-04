@@ -1,0 +1,16 @@
+Validate successful retrieval of country list via GET /country
+Validate response when no countries exist via GET /country
+Validate error response for missing headers
+Validate successful creation of a country via POST /country
+Validate error response for missing mandatory fields via POST /country
+Validate successful retrieval of a country by ID via GET /country/{id}
+Validate error response for invalid country ID via GET /country/{id}
+Validate successful update of a country via PUT /country/{id}
+Validate error response for invalid data type via PUT /country/{id}
+Validate successful deletion of a country via DELETE /country/{id}
+Validate error response for non-existent ID deletion via DELETE /country/{id}
+Validate API response time under load via GET /country
+Validate server behavior under stress via multiple concurrent API calls
+Validate endpoint protection against unauthorized access
+Validate JWT token protection for POST /country
+Validate proper JSON schema in responses
