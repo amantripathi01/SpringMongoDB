@@ -1,0 +1,144 @@
+### Functional Test Cases
+
+#### **/country (GET) - Fetch All Countries**
+- **Test Scenario:** Validate successful retrieval of country list with correct structure.
+  - **Input:** Access `GET /country` endpoint with valid `app-identifier` and `customer-secret-key` headers.
+  - **Expected Output:** Status: `success`, Message: "Data fetched successfully", `data` contains a list of all `countries` with attributes like `id`, `name`, `code`, etc. Example: 
+    ```json
+    {
+      "status": "success",
+      "message": "Data fetched successfully",
+      "data": {
+        "countries": [
+          {"id": 32, "name": null, "code": "USA", "default_currency": "USD"}
+        ]
+      }
+    }
+    ```
+  - **Edge Case:** API fails gracefully when headers are omitted or invalid. Expected status: `401 Unauthorized`.
+
+- **Test Scenario:** Validate response when no countries exist.
+  - **Input:** Assume no `countries` in database, hit `GET /country`.
+  - **Expected Output:** Empty country list with status: `success`, Message: "Data fetched successfully", Example:
+    ```json
+    {
+      "status": "success",
+      "message": "Data fetched successfully",
+      "data": {
+        "countries": []
+      }
+    }
+    ```
+
+---
+
+#### **/country (POST) - Create a New Country**
+- **Test Scenario:** Validate successful creation of a new country.
+  - **Input:** Access `POST /country` with valid headers and body:
+    ```json
+    {
+      "name": "INDIA",
+      "code": "IND",
+      "currencies": ["INR", "USD", "EURO"],
+      "default_currency": "INR",
+      "is_active": 1
+    }
+    ```
+  - **Expected Output:** Status: `success`, Message: "Country created successfully", Response contains newly created country details.
+
+- **Edge Case:** Validate error when mandatory fields are missing (e.g., `name`, `code`).
+  - **Input:** Send body excluding `name` parameter.
+  - **Expected Output:** Status: `400 Bad Request`, Message includes error details mentioning missing fields: "name is required".
+
+---
+
+#### **/country/{id} (GET) - Fetch Country by ID**
+- **Test Scenario:** Validate successful fetching of country details.
+  - **Input:** Access `GET /country/32` with valid headers.
+  - **Expected Output:**
+    ```json
+    {
+      "status": "success",
+      "message": "Data fetched successfully",
+      "data": {
+        "country": {
+          "id": 32,
+          "name": "USA",
+          "code": "USA",
+          "default_currency": "USD",
+          "is_active": 1
+        }
+      }
+    }
+    ```
+
+- **Edge Case:** Validate error for invalid/non-existent country ID.
+  - **Input:** Hit `GET /country/9999` for an ID that doesn't exist.
+  - **Expected Output:** Status: `404 Not Found`, Message: "Country not found".
+
+---
+
+#### **/country/{id} (PUT) - Update Country by ID**
+- **Test Scenario:** Validate successful update of country data.
+  - **Input:** Access `PUT /country/32` with headers and body:
+    ```json
+    {
+      "name": "New USA",
+      "code": "US",
+      "default_currency": "USD",
+      "is_active": 0
+    }
+    ```
+  - **Expected Output:** Status: `success`, Message: "Country updated successfully", Response reflects updated attributes.
+
+- **Edge Case:** Validate error when trying to update with invalid input values, e.g., string instead of integer in `is_active`.
+  - **Input:** Body contains `is_active: "string"`.
+  - **Expected Output:** Status: `400 Bad Request`, Grammar-aligned message indicates data type issue.
+
+---
+
+#### **/country/{id} (DELETE) - Delete Country by ID**
+- **Test Scenario:** Validate successful deletion of a country.
+  - **Input:** Access `DELETE /country/32` with valid headers.
+  - **Expected Output:** Status: `success`, Message: "Country deleted successfully".
+
+- **Edge Case:** Validate error for non-existent ID deletion.
+  - **Input:** Hit `DELETE /country/9999`.
+  - **Expected Output:** Status: `404 Not Found`, Message: "Country not found".
+
+---
+
+### Non-Functional Test Cases
+
+#### **Performance & Load Testing**
+- **Test Scenario:** Validate API response time for fetching country details (`GET /country`) when database contains thousands of entries.
+  - **Input:** Simulate large dataset (e.g., 10,000 countries).
+  - **Expected Output:** Response time ≤ 500ms under normal load.
+
+- **Test Scenario:** Stress-test with high concurrent API calls (e.g., 1000+ requests per second).
+  - **Input:** Send simultaneous GET/POST/DELETE requests.
+  - **Expected Output:** Server should handle gracefully without performance degradation (99% requests succeeding).
+
+---
+
+#### **Security Tests**
+- **Test Scenario:** Validate endpoint protection by checking unauthorized access.
+  - **Input:** Omit `app-identifier` and `customer-secret-key` headers in any endpoint request.
+  - **Expected Output:** Status: `401 Unauthorized`, Message: "Missing headers or invalid credentials".
+
+- **Test Scenario:** Validate JWT token protection on protected endpoints like `POST /country`.
+  - **Input:** Incorrect bearer token provided in headers.
+  - **Expected Output:** Status: `403 Forbidden`.
+
+---
+
+#### **UI/UX and Accessibility Tests (Optional)**
+- **Test Scenario:** API responses are consistent and human-readable as per documentation standards (e.g., CommonMark/MultiLine description testing).
+  - **Expected Output:** JSON responses align with the described schema and documentation standards. Example: Proper fields (`status`, `error_info`, etc.) always included in response.
+
+---
+
+#### **Database Integrity**
+- **Test Scenario:** Validate correct database schema mapping during create/update/delete actions.
+  - **Expected Output:** No orphan entries or incorrect foreign key mappings after modifying `countries` data.
+
