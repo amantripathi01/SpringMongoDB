@@ -1,0 +1,85 @@
+### Test Cases for User Story: "[ZBIO-6159] Roostgpt change for upload of Jira ticket as pdf for functional Test."
+
+---
+
+#### **Functional Test Cases**
+These test cases ensure the feature works as per the specified requirements.
+
+1. **Upload PDF of Jira Ticket**
+   - **Input**: A valid PDF file (`jira.pdf`) of a Jira ticket.
+   - **Expected Output**: File is successfully uploaded, and the system confirms the upload.
+   - **Edge Case**: 
+     - Uploading an empty PDF file should trigger an appropriate error message.
+     - Uploading a corrupted PDF file should result in a failure prompt.
+
+2. **Document Type Validation**
+   - **Input**: Various document types like `.txt`, `.docx`, and `.xlsx`.
+   - **Expected Output**: System rejects all document types except `.pdf` with a "Unsupported file type" message.
+   - **Edge Case**:
+     - If a `.pdf` file has wrong MIME type, it should be rejected.
+
+3. **Processing the Upload in Roost-Reg**
+   - **Input**: PDF file (`jira.pdf`) sent from approostio with `fileName`, `content`, and `prompt type`.
+   - **Expected Output**: Roost-reg should correctly store the file path along with the `fileName` and `prompt type`.
+   - **Edge Case**:
+     - Malformed `fileName` or `content` should trigger an error.
+
+4. **Integration with AI Server**
+   - **Input**: File path, `fileName`, and `prompt type` forwarded to AI server.
+   - **Expected Output**: AI server successfully fetches the file content and `prompt type` and processes the request.
+   - **Edge Case**:
+     - Invalid file paths should cause the process to halt and log an error.
+
+5. **PDF Parsing Logic**
+   - **Input**: Valid Jira ticket PDF (`jira.pdf`) with title, description, and comments.
+   - **Expected Output**: AI server parses the details accurately using regex, extracting `title`, `description`, and `comments`.
+   - **Edge Case**:
+     - PDF does not contain expected fields (`title`, `description`, etc.), should either partially parse or return "Invalid PDF structure."
+
+6. **Prompt Type Validation**
+   - **Input**: Upload PDF with various prompt types (e.g., `Functional Test`, `Performance Test`, etc.).
+   - **Expected Output**: System stores and validates correct prompt types without errors.
+   - **Edge Case**:
+     - Unsupported prompt types should trigger a "Invalid prompt type" error message.
+
+---
+
+#### **Non-Functional Test Cases**
+These test cases address performance, scalability, and usability requirements.
+
+1. **Performance for Large PDFs**
+   - **Input**: Upload a large and valid Jira ticket PDF file (e.g., 100 MB).
+   - **Expected Output**: File upload completes within 10 seconds without any timeout errors.
+   - **Edge Case**: 
+     - Very large files exceeding the threshold size should be rejected with an appropriate error message.
+
+2. **Concurrent Uploads**
+   - **Input**: Upload multiple PDFs in parallel from different instances of approostio.
+   - **Expected Output**: System handles concurrent uploads gracefully with no degradation in performance.
+   - **Edge Case**: Massive concurrent uploads should not crash the server but may queue uploads.
+
+3. **System Resilience During Interruption**
+   - **Input**: Force a network interruption during PDF upload.
+   - **Expected Output**: System retries the upload or logs the failure clearly.
+   - **Edge Case**: Prolonged outages should not corrupt already uploaded files or trigger duplicates.
+
+4. **Scalability of Regex Parsing**
+   - **Input**: Parse PDFs with varying complexities - simple structures vs. deeply nested content.
+   - **Expected Output**: Regex logic should parse accurately across all input scenarios without causing memory leaks.
+   - **Edge Case**: Extremely large or complex PDFs may gracefully timeout due to processing constraints.
+
+5. **Error Handling and Log Management**
+   - **Input**: Deliberately upload unsupported file types or corrupted PDFs.
+   - **Expected Output**: System logs meaningful error messages for developers.
+   - **Edge Case**: Logs should not exceed storage limits under heavy error conditions.
+
+6. **User Experience under Heavy Load**
+   - **Input**: Multiple users attempt PDF uploads and parsing simultaneously.
+   - **Expected Output**: System provides responsive UI with clear status of upload progress.
+   - **Edge Case**: If server load is extreme, users should receive "System busy, please retry" messages instead of unexplained failures.
+
+---
+
+### Special Considerations
+- Verify compliance with the data handling standards for secure file transfers and storage (e.g., GDPR, data encryption protocols).
+- Ensure regex-based parsing is modular and adaptable for changes in Jira's PDF structure.

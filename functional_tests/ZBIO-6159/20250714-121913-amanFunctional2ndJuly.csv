@@ -1,0 +1,12 @@
+Redirect to Swagger UI
+Retrieve the list of posts
+Search posts by matching text
+Add a new post with valid data
+Fail to add a post with invalid data
+Search posts with non-existent text
+Validate Cross-origin Access for GET requests
+Validate Cross-origin Access for POST requests
+Search posts with partial text match
+Search posts containing special characters
+Handle unsupported HTTP method for posting
+Validate HTTP method for updating (PUT)
