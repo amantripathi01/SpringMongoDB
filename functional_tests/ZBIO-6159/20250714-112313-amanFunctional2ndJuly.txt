@@ -1,0 +1,93 @@
+### Test Scenarios for [ZBIO-6159] - Roostgpt change for upload of Jira ticket as PDF for Functional Test
+
+#### **Functional Test Cases**
+---
+
+- **Scenario: Document upload in Functional Testing**
+  - **Input Values:** User uploads a PDF (ex: `jira.pdf`) through Functional Testing UI as an alternative to Jira or Azure DevOps linking.
+  - **Expected Output:** The system accepts the PDF file and stores it correctly for processing.
+  - **Edge Cases:**
+    - Uploading a non-PDF file (e.g., `.txt`, `.docx`) should result in an error.
+    - Uploading a large PDF (>10 MB) should be processed without delays or provide an error if size exceeds supported limits.
+    - Uploading a PDF with no content should prompt a validation error stating "Empty files cannot be processed."
+
+- **Scenario: File sending from `approostio` side**
+  - **Input Values:** Sending file details as an array object with `fileName`, `content`, and `promptType` (e.g., `{ fileName: 'jira.pdf', content: binaryFileData, promptType: 'jira-upload' }`).
+  - **Expected Output:** The data structure is correctly read and passed from `approostio` to `roost-reg` without data corruption.
+  - **Edge Cases:**
+    - Missing required fields (e.g., `fileName`) should generate a warning and prevent processing.
+    - Sending an array with multiple files should handle all files seamlessly.
+    - Corrupted binary data within `content` should return an appropriate error.
+
+- **Scenario: File path storage in `roost-reg`**
+  - **Input Values:** Roost-reg is passed the `fileName` and `promptType` and stores the file path appropriately (e.g., `files/uploads/jira.pdf`).
+  - **Expected Output:** File path is successfully stored with its associated details.
+  - **Edge Cases:**
+    - File path duplication for the same file name should be resolved (e.g., rename file paths to avoid overwrites: `jira_1.pdf`).
+    - Invalid directory paths should prompt an appropriate error.
+
+- **Scenario: Transmission to AI Server**
+  - **Input Values:** File paths of uploaded PDFs along with `fileContent`, `fileName`, and `promptType` are sent to the AI Server (e.g., `{ filePaths: ['/files/uploads/jira.pdf'], promptType: 'jira-upload' }`).
+  - **Expected Output:** AI Server correctly retrieves file contents from the paths and doesn’t encounter errors during processing. 
+  - **Edge Cases:**
+    - Improper file path format (e.g., `/unknown/files/jira.pdf`) should return a "File Not Found" error.
+    - Lost connection to the AI Server during transmission should retry automatically or fail gracefully.
+
+- **Scenario: Parsing PDF content using regex**
+  - **Input Values:** PDF is parsed using regex-based approach to extract details like `Title`, `Description`, and `Comments` (e.g., `jira.pdf` contains Title: [ZBIO-6159], Description: ..., Comments: ...).
+  - **Expected Output:** Key data is extracted successfully and returned in the requested format.
+  - **Edge Cases:**
+    - PDF has no structured content or missing fields (e.g., no `Comments` section) should still parse valid available sections.
+    - Incorrect regex match configurations should return verbose logs to debug the regex error.
+
+- **Scenario: Response back from AI after processing**
+  - **Input Values:** AI Server provides a structured response after processing uploaded Jira data (e.g., `{ status: "success", extractedData: { title: 'ZBIO-6159', description: ..., comments: ... } }`).
+  - **Expected Output:** Extracted data is returned in a valid format and displayed correctly in the Functional Testing interface.
+  - **Edge Cases:**
+    - AI Server fails to parse the provided PDF structure should return "Parsing failed" and highlight the reason.
+    - Response includes additional unexpected fields should handle gracefully without crashing.
+
+---
+
+#### **Non-Functional Test Cases**
+---
+
+- **Scenario: Performance test for large file uploads**
+  - **Input Values:** User uploads a high-resolution PDF (>15 MB) in the Functional Testing UI.
+  - **Expected Output:** The system processes the upload within acceptable time (e.g., <3 seconds).
+  - **Edge Cases:**
+    - Uploading thousands of files simultaneously should not degrade performance beyond acceptable limits.
+
+- **Scenario: Security check for malicious file upload**
+  - **Input Values:** User uploads a malicious or specially crafted PDF with embedded scripts.
+  - **Expected Output:** System validates file for potential threats and blocks unsafe files.
+  - **Edge Cases:**
+    - Files with suspicious behaviors (like executable code) should be flagged.
+
+- **Scenario: Load testing for concurrent file uploads**
+  - **Input Values:** Simulate 1000+ users uploading Jira PDF files concurrently.
+  - **Expected Output:** System handles concurrent uploads seamlessly without crashing.
+  - **Edge Cases:**
+    - Database write conflicts during file path storage must be tested under heavy loads.
+
+- **Scenario: Scalability of regex parsing approach**
+  - **Input Values:** The system parses PDFs with varying levels of structured and unstructured data.
+  - **Expected Output:** System handles complexity without timeout or overflow issues.
+  - **Edge Cases:**
+    - PDFs with thousands of pages should still parse correctly within acceptable time limits.
+
+- **Scenario: System reliability during server failure**
+  - **Input Values:** Simulate AI Server going offline during file retrieval.
+  - **Expected Output:** System retries transmission and logs issue for debugging.
+  - **Edge Cases:**
+    - Ensure no data corruption or loss during retries.
+
+- **Scenario: Usability testing for Functional Testing UI**
+  - **Input Values:** Users test the file upload feature with visual aids and tooltips.
+  - **Expected Output:** Users find the interface intuitive and easy to upload a Jira PDF.
+  - **Edge Cases:**
+    - Complex interactions should still be understandable by new users.
+
+---
+
+These test cases ensure robustness, scalability, and user-friendliness while addressing critical edge cases and performance considerations for the requested feature enhancements.
