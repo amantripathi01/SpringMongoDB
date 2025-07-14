@@ -1,0 +1,12 @@
+Valid XML file upload
+Upload unsupported file formats
+Empty or null file upload attempt
+File size limit validation
+File naming edge cases
+Multiple file upload attempt
+UI performance during file upload
+Error message readability and localization
+Browser compatibility
+Security validation for uploaded files
+System scalability under peak load
+UI design responsiveness across devices
