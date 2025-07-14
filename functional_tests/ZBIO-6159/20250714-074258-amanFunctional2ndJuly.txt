@@ -1,0 +1,80 @@
+### Test Scenarios for User Story [ZBIO-6159]
+
+#### Functional Test Scenarios
+
+- **Scenario 1: Uploading Jira ticket PDF from Approostio**
+  - **Input:** A valid Jira ticket PDF named `jira.pdf` is uploaded from the approostio side, with an array object containing `fileName`, `content`, and `promptType`.
+  - **Expected Output:** The `fileName`, `content`, and `promptType` should be stored correctly in roost-reg, creating a file path for the given input.
+  - **Edge Cases:**
+    - Uploading a PDF file larger than a predefined limit (e.g., 5 MB).
+    - Uploading a file with an unsupported format (e.g., `.docx` or `.txt`) instead of `.pdf`.
+
+- **Scenario 2: Sending File Data from Roost-reg to AI Server**
+  - **Input:** Roost-reg sends a string of file paths containing `fileName` and associated `promptType` to the AI server.
+  - **Expected Output:** AI Server should receive file paths accurately and retrieve the content using those paths.
+  - **Edge Cases:**
+    - Incorrect or corrupt file paths sent to the AI server.
+    - Missing `promptType` in the roost-reg data.
+
+- **Scenario 3: Parsing Jira Ticket PDF in AI Server**
+  - **Input:** AI server parses a valid Jira ticket PDF (`jira.pdf`) to extract details such as Title, Description, and Comments using regex-based logic.
+  - **Expected Output:** AI Server should accurately extract the following fields:
+    - **Title:** `[ZBIO-6159] Roostgpt change for upload of Jira ticket as pdf for functional Test`
+    - **Description:** `@Divyesh can we prioritise the upload of Jira ticket as pdf for functional test? ...`
+    - **Comments:** `Flow of the code ... server to node js implementation`
+  - **Edge Cases:**
+    - PDF file lacks one or more fields (e.g., missing Title or Comments).
+    - Malformatted PDF (e.g., text is not useful for regex parsing).
+
+- **Scenario 4: Retrieving Content for AI Processing**
+  - **Input:** AI Server retrieves content using file paths sent by roost-reg and processes it based on `promptType`.
+  - **Expected Output:** The correct content should be fetched and processed based on `promptType` logic, then forwarded to AI for further action.
+  - **Edge Cases:**
+    - File paths retrieved are inaccessible or not readable.
+    - Content retrieved does not match the expected format for `promptType`.
+
+- **Scenario 5: Error Handling for Unsupported Formats**
+  - **Input:** User attempts to upload files in unsupported formats (e.g., `.docx`, `.xlsx`).
+  - **Expected Output:** Receive a user-friendly error message, such as "Unsupported file format. Please upload only PDF files."
+  - **Edge Cases:**
+    - Attempting to upload hidden files or files without extensions (e.g., `hiddenfile`).
+
+---
+
+#### Non-Functional Test Scenarios
+
+- **Scenario 1: Performance Testing**
+  - **Input:** Upload a valid Jira ticket PDF (`jira.pdf`) with the maximum allowed file size (e.g., 5 MB).
+  - **Expected Output:** File should be uploaded, processed, and transmitted to the AI Server within 3 seconds.
+  - **Edge Cases:**
+    - High server load: Test upload with hundreds of concurrent PDF submissions.
+
+- **Scenario 2: Scalability Testing**
+  - **Input:** Upload 50 Jira ticket PDFs concurrently from the approostio side, each with varying sizes and valid data.
+  - **Expected Output:** System should handle all uploads seamlessly without crashing or slowing down.
+  - **Edge Cases:**
+    - Upload 50 PDFs where some are invalid or unsupported.
+
+- **Scenario 3: Security Testing**
+  - **Input:** Attempt to upload a malicious file disguised as a PDF (e.g., containing embedded scripts).
+  - **Expected Output:** System should deny the upload, log the attempt, and prevent any security vulnerabilities.
+  - **Edge Cases:**
+    - Hidden malicious code in the file’s metadata.
+
+- **Scenario 4: Reliability Testing**
+  - **Input:** Interruption occurs (e.g., server momentarily disconnects) during the PDF upload process.
+  - **Expected Output:** System should retry the upload automatically or roll back to the previous stable operation state without corrupting the data.
+  - **Edge Cases:**
+    - Multiple interruptions during different stages of upload.
+
+- **Scenario 5: Compatibility Testing**
+  - **Input:** Try uploading Jira PDFs generated with different tools (e.g., Adobe Acrobat vs. online converters).
+  - **Expected Output:** All valid PDFs should be parsed successfully, regardless of the tool used for generation.
+  - **Edge Cases:**
+    - PDFs containing unusual fonts or uncommon encoding.
+
+---
+
+#### Summary
+
+The above test cases cover both functional and non-functional testing aspects for [ZBIO-6159]. Critical workflows like uploading PDFs, file handling through roost-reg to the AI Server, regex-based PDF parsing, and error handling are thoroughly tested in functional scenarios. Non-functional scenarios emphasize stability, performance, security, and compatibility under varying conditions.
