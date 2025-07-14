@@ -1,0 +1,73 @@
+### Test Scenarios for User Story: ZBIO-6758 - XML File Upload Check From UI
+
+---
+
+#### **Functional Test Cases**
+
+1. **Test Case: Valid XML file upload**
+   - **Input:** Upload a valid XML file (e.g., `valid_file.xml`) via the UI upload functionality.
+   - **Expected Output:** File upload is successful, and no error message is displayed. The backend processes the file correctly without any issues.
+   - **Edge Case:** Ensure the XML file adheres to required XML formatting standards; upload fails if it's invalid.
+
+2. **Test Case: Upload unsupported file formats**
+   - **Input:** Upload unsupported file types such as `.txt`, `.pdf`, `.docx`, `.png`, or `.zip`.
+   - **Expected Output:** The UI should block the upload, displaying an error message: "Unsupported file type. Please upload an XML file."
+   - **Edge Case:** Attempt to upload a file with a deliberately incorrect file extension (e.g., `test_file.xmml`) to confirm the validation strictly checks file type.
+
+3. **Test Case: Empty or null file upload attempt**
+   - **Input:** Try to upload an empty file or trigger the upload process without selecting a file.
+   - **Expected Output:** The upload process should not start, and an error message appears: "Please select a file to upload."
+   - **Edge Case:** Verify behavior when a 0-byte file is uploaded.
+
+4. **Test Case: File size limit validation**
+   - **Input:** Upload a valid XML file that exceeds the size limits set by the system (e.g., if the size limit is 5MB, upload a 6MB XML file).
+   - **Expected Output:** The UI should block the upload and display an error message: "File size exceeds the maximum allowed limit of 5MB."
+   - **Edge Case:** Upload a file that's exactly at the size limit (e.g., 5MB) to ensure proper handling.
+
+5. **Test Case: File naming edge cases**
+   - **Input:** Upload an XML file with special characters or spaces in its name (e.g., `my file @work.xml` or `file_with _spaces.xml`).
+   - **Expected Output:** File uploads successfully if it's valid XML and under the size limit. If unsupported formats, it will fail with the error: "Unsupported file type."
+   - **Edge Case:** Ensure the naming convention itself does not block XML files unnecessarily.
+
+6. **Test Case: Multiple file upload attempt**
+   - **Input:** Try to drag and drop multiple files simultaneously where only some are XML files.
+   - **Expected Output:** UI should block all non-XML files and process only the XML files. Show an error message for invalid files in the batch upload: "Some files were blocked due to unsupported format."
+   - **Edge Case:** Include multiple files of varying sizes and extensions.
+
+---
+
+#### **Non-Functional Test Cases**
+
+1. **Test Case: UI performance during file upload**
+   - **Input:** Simultaneously upload a large number of valid XML files, each within the size limit.
+   - **Expected Output:** The UI remains responsive during uploads. Loading spinner or progress bar displays smoothly without lag.
+   - **Edge Case:** Test the upload process under limited network conditions (e.g., low bandwidth).
+
+2. **Test Case: Error message readability and localization**
+   - **Input:** Trigger different error scenarios (invalid file type, exceeding file size, etc.).
+   - **Expected Output:** Error messages should be clear, concise, and easy to understand. If localization is enabled, confirm error messages display correctly translated text.
+   - **Edge Case:** Check behavior when accessing the UI in unsupported locales or languages.
+
+3. **Test Case: Browser compatibility**
+   - **Input:** Perform file upload tests across various browsers such as Chrome, Firefox, Safari, Edge, etc.
+   - **Expected Output:** The file type validation and error messages should work consistently across all browsers.
+   - **Edge Case:** Ensure proper file upload behavior in older browser versions or less common browsers.
+
+4. **Test Case: Security validation for uploaded files**
+   - **Input:** Attempt to upload an XML file embedded with malicious code or scripts.
+   - **Expected Output:** The backend blocks the upload and shows a generic error message: "File upload failed due to security concerns."
+   - **Edge Case:** Ensure proper scanning and validation for both large and small XML files with potentially harmful payloads.
+
+5. **Test Case: System scalability under peak load**
+   - **Input:** Simultaneously upload files from multiple user sessions (e.g., 100+ concurrent uploads of valid XML files).
+   - **Expected Output:** The system handles uploads without crashing or timing out. Error handling gracefully manages upload failures due to network or server load.
+   - **Edge Case:** Simulate server overload conditions and verify system behavior and recovery.
+
+6. **Test Case: UI design responsiveness across devices**
+   - **Input:** Test the file upload functionality on desktop, tablet, and mobile devices.
+   - **Expected Output:** UI elements like upload buttons and error messages should be responsive and properly aligned on different screen sizes.
+   - **Edge Case:** Verify behavior on extremely small screen sizes, ensuring core functionality is not lost.
+
+---
+
+These scenarios comprehensively cover functional and non-functional aspects of the file upload feature for ZBIO-6758. Let me know if additional details are required!
