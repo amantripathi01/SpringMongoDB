@@ -1,0 +1,19 @@
+Uploading a PDF file for Functional Testing
+Uploading a non-PDF file
+Uploading a large PDF file
+Uploading an empty PDF file
+Sending file details from "approostio"
+Missing required fields in file details
+Storing file path in "roost-reg"
+File path duplication resolution
+Sending file path to AI Server
+Incorrect file path format
+Parsing PDF content using regex
+Parsing invalid PDF content
+Receiving response from AI Server after processing
+Parsing failure by AI Server
+Uploading a high-resolution PDF
+Uploading malicious PDF file
+Concurrent file uploads
+Reliability during server failure
+Usability testing for Functional Testing UI
