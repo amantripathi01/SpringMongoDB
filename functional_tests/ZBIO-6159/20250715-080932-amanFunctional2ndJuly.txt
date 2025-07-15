@@ -1,0 +1,84 @@
+{
+  "scenarios": [
+    {
+      "type": "functional",
+      "title": "Upload Jira Ticket as PDF",
+      "description": "Verify that a user can successfully upload a Jira ticket as a PDF for functional testing.",
+      "testId": "TC-001",
+      "testDescription": "A user uploads a PDF containing a Jira ticket through the functional testing interface, and the system processes it correctly.",
+      "prerequisites": "1. The web application must be connected to the functional testing module.\n2. The user must have the correct permissions to upload a file.\n3. Supported document type for upload must include PDF.\n4. A sample PDF file with a Jira ticket must exist.",
+      "stepsToPerform": "1. Navigate to the Functional Testing interface.\n2. Locate the 'Upload Jira Ticket' button or feature.\n3. Click the button to upload a file.\n4. Select a valid PDF file containing a Jira ticket.\n5. Click 'Submit'.",
+      "expectedResult": "The system stores the file's path and prompt type, validates the content, and sends it successfully through the flow (Approostio -> Roost-reg -> AI Server)."
+    },
+    {
+      "type": "functional",
+      "title": "PDF Parsing of Jira Ticket",
+      "description": "Validate that the system correctly parses the uploaded PDF to extract details such as description, title, and comments.",
+      "testId": "TC-002",
+      "testDescription": "The system processes a valid PDF file and correctly parses it using regex to fetch details like description, title, and comments.",
+      "prerequisites": "1. A properly formatted PDF containing Jira ticket information must exist.\n2. Regex patterns for parsing the PDF fields must be correctly defined and implemented.",
+      "stepsToPerform": "1. Upload a valid PDF file containing a Jira ticket.\n2. Observe the system's processing logic using the regex-based approach.\n3. Capture the output details (description, title, and comments) fetched from the PDF.",
+      "expectedResult": "The system extracts the description, title, and comments accurately, and these details are displayed or stored appropriately."
+    },
+    {
+      "type": "functional",
+      "title": "Error Handling for Unsupported File Formats",
+      "description": "Ensure documents in unsupported formats trigger appropriate error messages during upload.",
+      "testId": "TC-003",
+      "testDescription": "When a user attempts to upload a document in an unsupported format (e.g., .docx or .xlxs), the system should reject the upload with a clear error message.",
+      "prerequisites": "1. The system must have a predefined list of supported file formats (e.g., PDF).\n2. Sample unsupported files (e.g., .docx, .png) must exist.",
+      "stepsToPerform": "1. Navigate to the Functional Testing interface.\n2. Attempt to upload an unsupported file type like .docx.\n3. Click 'Submit'.",
+      "expectedResult": "The system rejects the upload and displays an error message: 'Unsupported file format. Please upload a PDF.'"
+    },
+    {
+      "type": "functional",
+      "title": "Verify Data Flow Across System Components",
+      "description": "Ensure the uploaded file's details flow correctly through all components: Approostio -> Roost-reg -> AI Server.",
+      "testId": "TC-004",
+      "testDescription": "Test the interaction between all key system components in processing an uploaded PDF file and sending relevant data to the AI server for further processing.",
+      "prerequisites": "1. All mentioned components must be configured and functional.\n2. Logs or monitoring tools must be enabled to verify data flow at each stage.",
+      "stepsToPerform": "1. Upload a valid PDF file from the Approostio front-end.\n2. Inspect logs within Roost-reg to confirm that file paths and prompt types are stored correctly.\n3. Verify that file content and metadata are passed to the AI server for processing.\n4. Confirm the AI server processes and stores the parsed content correctly.",
+      "expectedResult": "The file data flows seamlessly through all system components without errors, and the parsed content is received by the AI server."
+    },
+    {
+      "type": "non-functional",
+      "title": "Performance of PDF Parsing",
+      "description": "Evaluate the time taken to parse large-sized Jira ticket PDFs.",
+      "testId": "TC-005",
+      "testDescription": "Measure system performance by uploading PDFs of various sizes and validating parsing speed.",
+      "prerequisites": "1. A set of sample PDF files of varying sizes must exist.\n2. Monitoring tools must be available to measure parsing time.",
+      "stepsToPerform": "1. Upload a small-sized PDF file and note the parsing time.\n2. Upload a medium-sized PDF file and note the parsing time.\n3. Upload a large-sized PDF file and note the parsing time.\n4. Analyze results and compare against acceptable benchmarks.",
+      "expectedResult": "The system parses all PDFs within a reasonable time frame, adhering to predefined performance benchmarks."
+    },
+    {
+      "type": "non-functional",
+      "title": "System Scalability with High File Volumes",
+      "description": "Test the application's ability to handle concurrent uploads of multiple PDF files.",
+      "testId": "TC-006",
+      "testDescription": "Simulate high-volume uploads to ensure the system remains stable and processes files efficiently without crashes or slowdowns.",
+      "prerequisites": "1. Load testing tools must be available.\n2. A batch of valid sample PDFs must exist.",
+      "stepsToPerform": "1. Simulate concurrent uploads of 50 PDF files.\n2. Monitor system resources (CPU, memory) during processing.\n3. Observe system behavior for errors or delays.",
+      "expectedResult": "The system successfully handles concurrent uploads, processes all files, and remains stable under load."
+    },
+    {
+      "type": "functional",
+      "title": "Validation of File Path Storage in Roost-reg",
+      "description": "Ensure the uploaded file's path, file name, and prompt type are stored correctly in Roost-reg.",
+      "testId": "TC-007",
+      "testDescription": "Verify that Roost-reg correctly stores the details of the uploaded PDF file.",
+      "prerequisites": "1. Roost-reg component must be functional and accessible.\n2. A valid PDF file must be uploaded.",
+      "stepsToPerform": "1. Upload a valid PDF file.\n2. Query the Roost-reg database or storage.\n3. Validate the stored file path, file name, and prompt type.",
+      "expectedResult": "The file path, file name, and prompt type are correctly stored in Roost-reg without discrepancies."
+    },
+    {
+      "type": "non-functional",
+      "title": "Error Recovery from Interrupted Uploads",
+      "description": "Assess how the system recovers from interrupted uploads (e.g., network issues mid-upload).",
+      "testId": "TC-008",
+      "testDescription": "Simulate an interrupted upload and verify whether the system can recover and allow completion or alert the user appropriately.",
+      "prerequisites": "1. Tools to simulate network interruption must be available.\n2. A valid sample PDF file for upload must exist.",
+      "stepsToPerform": "1. Begin uploading a valid PDF file.\n2. Interrupt the network connection midway.\n3. Observe system behavior: whether recovery occurs or an error message is shown.",
+      "expectedResult": "The system either resumes the upload or displays an error message: 'Upload interrupted. Please retry.'"
+    }
+  ]
+}
