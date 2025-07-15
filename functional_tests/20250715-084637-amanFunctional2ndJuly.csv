@@ -1,0 +1,18 @@
+Upload a valid PDF file of a Jira ticket
+Upload an empty PDF file
+Upload a corrupted PDF file
+Document type validation - Upload unsupported file type
+Document type validation - Upload PDF with wrong MIME type
+Process the upload in Roost-Reg
+Process upload with malformed metadata
+Integrate with AI server for processing
+AI server fails due to invalid file path
+Parse valid Jira ticket PDF
+Parse PDF with missing expected fields
+Validate prompt type during upload
+Upload with unsupported prompt type
+Upload a large PDF file
+Upload a file exceeding threshold size
+Handle concurrent uploads
+Handle network interruption during upload
+User experience under server load
