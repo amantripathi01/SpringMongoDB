@@ -1,0 +1,114 @@
+{
+  "scenarios": [
+    {
+      "type": "functional",
+      "title": "Verify Bold Text Formatting",
+      "description": "Ensure that bold text formatting is correctly applied in the document.",
+      "testId": "TC-001",
+      "testDescription": "Check if the text marked as bold in the document appears correctly with bold formatting.",
+      "prerequisites": "Open the sample DOCX document in a compatible word processor.",
+      "stepsToPerform": "1. Locate the section with bold text.\n2. Verify that the text appears bold.\n3. Compare with the expected bold text style.",
+      "expectedResult": "The text should appear bold as per the formatting applied."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Italic Text Formatting",
+      "description": "Ensure that italic text formatting is correctly applied in the document.",
+      "testId": "TC-002",
+      "testDescription": "Check if the text marked as italic in the document appears correctly with italic formatting.",
+      "prerequisites": "Open the sample DOCX document in a compatible word processor.",
+      "stepsToPerform": "1. Locate the section with italic text.\n2. Verify that the text appears italic.\n3. Compare with the expected italic text style.",
+      "expectedResult": "The text should appear italic as per the formatting applied."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Combined Bold and Italic Text Formatting",
+      "description": "Ensure that text with both bold and italic formatting is correctly applied.",
+      "testId": "TC-003",
+      "testDescription": "Check if the text marked as both bold and italic in the document appears correctly with both styles.",
+      "prerequisites": "Open the sample DOCX document in a compatible word processor.",
+      "stepsToPerform": "1. Locate the section with combined bold and italic text.\n2. Verify that the text appears with both bold and italic styles.\n3. Compare with the expected combined text style.",
+      "expectedResult": "The text should appear with both bold and italic formatting as applied."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Bulleted List Formatting",
+      "description": "Ensure that bulleted lists are correctly formatted in the document.",
+      "testId": "TC-004",
+      "testDescription": "Check if the bulleted list items are correctly displayed with bullets.",
+      "prerequisites": "Open the sample DOCX document in a compatible word processor.",
+      "stepsToPerform": "1. Locate the bulleted list section.\n2. Verify that each item is preceded by a bullet.\n3. Ensure the list structure is maintained.",
+      "expectedResult": "Each list item should be correctly preceded by a bullet."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Numbered List Formatting",
+      "description": "Ensure that numbered lists are correctly formatted in the document.",
+      "testId": "TC-005",
+      "testDescription": "Check if the numbered list items are correctly displayed with numbers.",
+      "prerequisites": "Open the sample DOCX document in a compatible word processor.",
+      "stepsToPerform": "1. Locate the numbered list section.\n2. Verify that each item is preceded by a number.\n3. Ensure the list structure is maintained.",
+      "expectedResult": "Each list item should be correctly preceded by a number."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Text Alignment and Size",
+      "description": "Ensure that text alignment and size are correctly applied in the document.",
+      "testId": "TC-006",
+      "testDescription": "Check if the text alignment and size are consistent with the document's formatting.",
+      "prerequisites": "Open the sample DOCX document in a compatible word processor.",
+      "stepsToPerform": "1. Locate the paragraph demonstrating text alignment and size.\n2. Verify the alignment (left, center, right) and size.\n3. Compare with the expected alignment and size.",
+      "expectedResult": "The text should have the correct alignment and size as specified."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Monospace Text Formatting",
+      "description": "Ensure that monospace text is correctly formatted in the document.",
+      "testId": "TC-007",
+      "testDescription": "Check if the text marked as monospace appears correctly with monospace formatting.",
+      "prerequisites": "Open the sample DOCX document in a compatible word processor.",
+      "stepsToPerform": "1. Locate the section with monospace text.\n2. Verify that the text appears in a monospace font.\n3. Compare with the expected monospace style.",
+      "expectedResult": "The text should appear in a monospace font as applied."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Strikethrough Text Formatting",
+      "description": "Ensure that strikethrough text is correctly formatted in the document.",
+      "testId": "TC-008",
+      "testDescription": "Check if the text marked with strikethrough appears correctly with a line through it.",
+      "prerequisites": "Open the sample DOCX document in a compatible word processor.",
+      "stepsToPerform": "1. Locate the section with strikethrough text.\n2. Verify that the text appears with a line through it.\n3. Compare with the expected strikethrough style.",
+      "expectedResult": "The text should appear with a strikethrough line as applied."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Blockquote Formatting",
+      "description": "Ensure that blockquotes are correctly formatted in the document.",
+      "testId": "TC-009",
+      "testDescription": "Check if the blockquote section is correctly indented and styled.",
+      "prerequisites": "Open the sample DOCX document in a compatible word processor.",
+      "stepsToPerform": "1. Locate the blockquote section.\n2. Verify the indentation and styling.\n3. Compare with the expected blockquote style.",
+      "expectedResult": "The blockquote should be correctly indented and styled as specified."
+    },
+    {
+      "type": "non-functional",
+      "title": "Document Load Performance",
+      "description": "Ensure the document loads within an acceptable time frame.",
+      "testId": "TC-010",
+      "testDescription": "Measure the time taken to load the document in a word processor.",
+      "prerequisites": "Ensure the word processor is installed and ready for use.",
+      "stepsToPerform": "1. Open the sample DOCX document.\n2. Measure the time taken for the document to fully load.\n3. Compare with the acceptable load time threshold.",
+      "expectedResult": "The document should load within 2 seconds."
+    },
+    {
+      "type": "non-functional",
+      "title": "Document Rendering Consistency",
+      "description": "Ensure the document renders consistently across different word processors.",
+      "testId": "TC-011",
+      "testDescription": "Check the document's appearance in multiple word processors for consistency.",
+      "prerequisites": "Install multiple word processors (e.g., Microsoft Word, Google Docs, LibreOffice).",
+      "stepsToPerform": "1. Open the sample DOCX document in each word processor.\n2. Compare the document's appearance across all platforms.\n3. Note any discrepancies in formatting or layout.",
+      "expectedResult": "The document should render consistently across all tested word processors."
+    }
+  ]
+}
