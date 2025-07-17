@@ -1,0 +1,54 @@
+{
+  "scenarios": [
+    {
+      "type": "functional",
+      "title": "User Login with Biometric Authentication",
+      "description": "Verify successful login using biometric authentication.",
+      "testId": "TC-001",
+      "testDescription": "A user attempts to log in using biometric authentication (fingerprint or FaceID).",
+      "prerequisites": "User must have biometric authentication set up on their device.",
+      "stepsToPerform": "1. Open the Bank Jerusalem mobile app.\n2. Select the option to log in using biometric authentication.\n3. Authenticate using fingerprint or FaceID.",
+      "expectedResult": "User is successfully logged in and redirected to the account dashboard."
+    },
+    {
+      "type": "functional",
+      "title": "View Account Details",
+      "description": "Verify that users can view their account balance and transaction history.",
+      "testId": "TC-002",
+      "testDescription": "A user views their account balance and transaction history for the past 90 days.",
+      "prerequisites": "User must be logged into the app.",
+      "stepsToPerform": "1. Navigate to the 'Account Details' section.\n2. View the general account balance.\n3. Filter transactions by date and type (transfer, debit, credit).",
+      "expectedResult": "User can see the account balance and a detailed list of transactions for the past 90 days."
+    },
+    {
+      "type": "functional",
+      "title": "Transfer Funds to External Account",
+      "description": "Verify that users can transfer funds to an external bank account.",
+      "testId": "TC-003",
+      "testDescription": "A user transfers funds to an external bank account after adding a new beneficiary.",
+      "prerequisites": "User must be logged into the app and have sufficient funds.",
+      "stepsToPerform": "1. Navigate to the 'Transfers' section.\n2. Select 'Transfer to External Account'.\n3. Add a new beneficiary and verify via SMS.\n4. Enter transfer details and confirm the transaction.",
+      "expectedResult": "Funds are successfully transferred to the external account, and the user receives a confirmation message."
+    },
+    {
+      "type": "non-functional",
+      "title": "System Performance Under Load",
+      "description": "Ensure the app performs efficiently under high load conditions.",
+      "testId": "TC-004",
+      "testDescription": "Test the app's response time and stability when multiple users access it simultaneously.",
+      "prerequisites": "Simulate multiple users accessing the app.",
+      "stepsToPerform": "1. Simulate 1000 concurrent users logging in and performing transactions.\n2. Monitor the app's response time and stability.",
+      "expectedResult": "The app maintains a response time of under 2 seconds for all actions, and no crashes occur."
+    },
+    {
+      "type": "non-functional",
+      "title": "Security Compliance",
+      "description": "Verify that the app complies with security standards.",
+      "testId": "TC-005",
+      "testDescription": "Ensure the app uses SSL encryption and secure data handling practices.",
+      "prerequisites": "App must be deployed in a test environment.",
+      "stepsToPerform": "1. Check that all data transmissions are encrypted using SSL.\n2. Verify that sensitive data is not stored in plain text.\n3. Conduct a security audit to identify vulnerabilities.",
+      "expectedResult": "All data transmissions are encrypted, sensitive data is securely handled, and no critical vulnerabilities are found."
+    }
+  ]
+}
