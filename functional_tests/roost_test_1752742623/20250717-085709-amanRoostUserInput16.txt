@@ -1,0 +1,44 @@
+{
+  "scenarios": [
+    {
+      "type": "functional",
+      "title": "Product Brochure Display",
+      "description": "Verify that the product brochure is displayed correctly on the website.",
+      "testId": "TC-001",
+      "testDescription": "Ensure that the product brochure is visible and all text is readable on the website.",
+      "prerequisites": "The product brochure must be uploaded to the website.",
+      "stepsToPerform": "1. Navigate to the website homepage.\n2. Locate the section where the product brochure is displayed.\n3. Verify that the brochure is visible and all text is clear and readable.",
+      "expectedResult": "The product brochure is displayed correctly with all text readable and no formatting issues."
+    },
+    {
+      "type": "functional",
+      "title": "Downloadable Files List",
+      "description": "Verify that the list of downloadable files is displayed correctly on the WordPress site.",
+      "testId": "TC-002",
+      "testDescription": "Ensure that all downloadable files are listed and accessible on the WordPress site.",
+      "prerequisites": "Downloadable files must be uploaded and linked on the WordPress site.",
+      "stepsToPerform": "1. Navigate to the WordPress site.\n2. Locate the section where downloadable files are listed.\n3. Verify that all files are listed and links are functional.",
+      "expectedResult": "All downloadable files are listed correctly and links are functional, allowing users to download files."
+    },
+    {
+      "type": "non-functional",
+      "title": "Website Performance Under Load",
+      "description": "Test the website's performance when multiple users access it simultaneously.",
+      "testId": "TC-003",
+      "testDescription": "Evaluate the website's response time and stability under high traffic conditions.",
+      "prerequisites": "Load testing tools should be set up and configured.",
+      "stepsToPerform": "1. Use a load testing tool to simulate multiple users accessing the website simultaneously.\n2. Monitor the website's response time and stability.\n3. Record any performance degradation or errors.",
+      "expectedResult": "The website should maintain acceptable response times and remain stable under high traffic conditions."
+    },
+    {
+      "type": "non-functional",
+      "title": "Website Accessibility",
+      "description": "Ensure that the website is accessible to users with disabilities.",
+      "testId": "TC-004",
+      "testDescription": "Verify that the website complies with accessibility standards such as WCAG 2.1.",
+      "prerequisites": "Accessibility testing tools should be available.",
+      "stepsToPerform": "1. Use accessibility testing tools to evaluate the website.\n2. Check for compliance with WCAG 2.1 standards.\n3. Identify any accessibility issues.",
+      "expectedResult": "The website should comply with accessibility standards, ensuring it is usable by individuals with disabilities."
+    }
+  ]
+}
