@@ -1,0 +1,44 @@
+{
+  "scenarios": [
+    {
+      "type": "functional",
+      "title": "User Registration",
+      "description": "Verify successful registration with valid details.",
+      "testId": "TC-001",
+      "testDescription": "A new user registers with valid details including username, password, and email.",
+      "prerequisites": "The registration page must be accessible and the user must not already exist in the database.",
+      "stepsToPerform": "1. Navigate to the registration page.\n2. Enter a unique username.\n3. Enter a valid email address.\n4. Enter a strong password.\n5. Confirm the password.\n6. Click 'Register' button.",
+      "expectedResult": "User receives a confirmation email and is redirected to a welcome page."
+    },
+    {
+      "type": "functional",
+      "title": "Password Reset",
+      "description": "Verify password reset functionality.",
+      "testId": "TC-002",
+      "testDescription": "A user requests a password reset and successfully changes their password.",
+      "prerequisites": "User must have an existing account with a registered email.",
+      "stepsToPerform": "1. Navigate to the login page.\n2. Click on 'Forgot Password' link.\n3. Enter registered email address.\n4. Click 'Submit'.\n5. Check email for password reset link.\n6. Click on the link and enter a new password.\n7. Confirm the new password.\n8. Submit the form.",
+      "expectedResult": "User receives a confirmation message and can log in with the new password."
+    },
+    {
+      "type": "non-functional",
+      "title": "Page Load Performance",
+      "description": "Ensure the registration page loads within acceptable time limits.",
+      "testId": "TC-003",
+      "testDescription": "Measure the time taken for the registration page to load under normal network conditions.",
+      "prerequisites": "Access to a standard internet connection.",
+      "stepsToPerform": "1. Clear browser cache.\n2. Navigate to the registration page.\n3. Measure the time taken for the page to fully load.",
+      "expectedResult": "The registration page loads within 2 seconds."
+    },
+    {
+      "type": "non-functional",
+      "title": "Security Vulnerability Check",
+      "description": "Check for common security vulnerabilities on the login page.",
+      "testId": "TC-004",
+      "testDescription": "Perform security testing to identify vulnerabilities such as SQL injection and XSS.",
+      "prerequisites": "Access to security testing tools.",
+      "stepsToPerform": "1. Use a security testing tool to scan the login page.\n2. Attempt SQL injection by entering SQL code in the username and password fields.\n3. Test for XSS by entering script tags in input fields.",
+      "expectedResult": "No vulnerabilities are found, and the application handles malicious inputs gracefully."
+    }
+  ]
+}
