@@ -1,0 +1,64 @@
+{
+  "scenarios": [
+    {
+      "type": "functional",
+      "title": "Account Creation",
+      "description": "Verify that a user can create an account with admin role.",
+      "testId": "TC-001",
+      "testDescription": "A user should be able to create an account on the Akitra Compliance console with admin privileges.",
+      "prerequisites": "Access to the Akitra Compliance console at discover.akitra.net.",
+      "stepsToPerform": "1. Navigate to discover.akitra.net.\n2. Click on 'Create Account'.\n3. Fill in the required details (e.g., email, password).\n4. Submit the form.",
+      "expectedResult": "The user account is created successfully with admin role, and the user is redirected to the dashboard."
+    },
+    {
+      "type": "functional",
+      "title": "User Management",
+      "description": "Verify that an admin can add a Compliance Coordinator user.",
+      "testId": "TC-002",
+      "testDescription": "An admin should be able to add a user with the role of Compliance Coordinator.",
+      "prerequisites": "Admin account must be logged in.",
+      "stepsToPerform": "1. Navigate to 'Settings'.\n2. Select 'User Management'.\n3. Click 'Add User'.\n4. Enter user details and select 'Compliance Coordinator' role.\n5. Click 'Save'.",
+      "expectedResult": "The user is added successfully with the role of Compliance Coordinator."
+    },
+    {
+      "type": "functional",
+      "title": "Integration Configuration",
+      "description": "Verify integration setup with a cloud platform for evidence collection.",
+      "testId": "TC-003",
+      "testDescription": "Ensure that the system can configure integration with a cloud platform to collect compliance evidence.",
+      "prerequisites": "Admin account must be logged in.",
+      "stepsToPerform": "1. Navigate to 'Settings'.\n2. Select 'Third Party'.\n3. Choose a cloud platform.\n4. Enter necessary credentials.\n5. Save the configuration.",
+      "expectedResult": "Integration is configured successfully, and evidence collection is enabled."
+    },
+    {
+      "type": "non-functional",
+      "title": "Performance of Evidence Collection",
+      "description": "Evaluate the performance of automated evidence collection from endpoints.",
+      "testId": "TC-004",
+      "testDescription": "Measure the time taken for the system to collect evidence from endpoints using Andromeda Shield.",
+      "prerequisites": "Andromeda Shield must be installed on endpoints.",
+      "stepsToPerform": "1. Trigger evidence collection from the console.\n2. Measure the time taken for evidence to appear in the system.",
+      "expectedResult": "Evidence is collected and displayed within an acceptable time frame (e.g., under 5 minutes)."
+    },
+    {
+      "type": "functional",
+      "title": "Policy Management Customization",
+      "description": "Verify that policies can be customized and saved.",
+      "testId": "TC-005",
+      "testDescription": "Ensure that users can edit and save policy templates to match company operations.",
+      "prerequisites": "Admin account must be logged in.",
+      "stepsToPerform": "1. Navigate to 'Policy Management'.\n2. Select a policy template.\n3. Edit the policy details.\n4. Save the changes.",
+      "expectedResult": "Policy changes are saved successfully and reflect in the system."
+    },
+    {
+      "type": "non-functional",
+      "title": "System Usability",
+      "description": "Assess the usability of the Akitra Compliance interface.",
+      "testId": "TC-006",
+      "testDescription": "Evaluate the ease of navigation and user-friendliness of the interface for new users.",
+      "prerequisites": "Access to the Akitra Compliance console.",
+      "stepsToPerform": "1. Perform common tasks such as account creation, user management, and policy customization.\n2. Gather feedback on ease of use and navigation.",
+      "expectedResult": "Users find the interface intuitive and easy to navigate, with minimal training required."
+    }
+  ]
+}
