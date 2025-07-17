@@ -1,0 +1,5 @@
+Successfully upload a 1 MB PDF file
+Attempt to upload a file larger than 1 MB
+Attempt to upload a file with an unsupported file type
+Attempt to upload a file without authentication
+Attempt to upload a file without specifying the file
